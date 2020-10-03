@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Why Use Linux?"
-date:   2020-10-02
+date:   2020-10-03
 categories: general
 ---
 
