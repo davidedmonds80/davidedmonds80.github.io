@@ -1,0 +1,51 @@
+---
+layout: post
+title:  "Why Use Linux?"
+date:   2020-10-02
+categories: general
+---
+
+##  Why Linux?                                                                                      
+                                                                                                     
+The first question in the process of switching from Windows or MacOS is pretty much always "Why     
+should I use Linux?" Which is a valid question, and an important one.  The answer to that question  
+can shape a person's path through the world of Linux. While people go to Linux communities and ask
+that question on daily basis, it's ultimately  a question each person has to answer for themselves.     
+
+There are a few major reason for someone to switch to Linux
+
+### The why not crowd
+
+Let's be honest, this group already knows why they want to use Linux, this is the hobbyists. They're
+going to spend hours finding the perfect distribution, tweaking it just right, and then blowing the
+whole thing away and trying something new.  It's fun, it's cheap entertainment, and they just want
+to play around with all the options out there. 
+
+### The career crowd
+
+This is the group that wants to work in the IT field in some capacity and they want to use Linux on
+their personal machines so they're fully familiar with it when they go to work in an enterprise and
+are confronted with 35,000 Linux servers they are now responsible for managing, or they're software
+developers and want to develop on Linux for any number of reasons from ease of workflow, to
+available tools. 
+
+### The privacy crowd
+
+This is probably the biggest influx of new users in the last few years.  Windows 10 collects a
+**ton** of data on the users.  This is concerning to many people, and rightfully so.  So they've
+asked how to prevent this data collection, and one of the answers is inevitably "Switch to Linux!"
+With the source code being available and audited by anyone and everyone, it's difficult to sneak in
+dirty rotten data collection tools to a Linux distribution, though not impossible.  
+
+Since many of the Linux distributions are built, distributed, and maintained by small groups of individuals, or
+non-profit organizations, there's very little reason to collect user data.  The few major distributions maintained, managed, or owned by for profit companies (Primarily Canonical-Ubunutu, Suse-Suse & OpenSuse, RedHat-RedHat Enterprise Linux, Fedora, CentOS) are still heavily contributed to by the community, and have open source code.  Those companies make their money from support contracts sold to businesses, not from selling user data
+
+
+While there are many reasons individuals chose to use Linux those are the three biggest reasons I
+see.  
+
+
+I'll address *which* Linux Distribution to use in another post. (Spoiler: It's **not** Kali, it's
+**NEVER** going to be Kali)
+
+

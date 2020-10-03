@@ -1,17 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-26T10:10:58-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/09/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-09-26T08:38:11-04:00</published><updated>2020-09-26T08:38:11-04:00</updated><id>http://localhost:4000/jekyll/update/2020/09/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/09/26/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-03T11:32:39-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/general/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/general/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/general/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
 
-&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+&lt;p&gt;Linux is just an Operating system.  In the grand scheme of things it’s not much
+different from Windows, MacOS, iOS, iPadOS, Android, BSD or any other operating system.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;It’s the collection of files that make up all the little bits and pieces of things that makes your computer a
+computer, and not a very expensive brick.  For the every day user it defines how the user interacts with
+their computer, what software can be installed, how their pictures are displayed, and all of the
+other things that someone might do on their computer.&lt;/p&gt;
 
-&lt;p&gt;Where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;There are a couple of major differences between Linux and the other Operating systems someone might
+encounter in the world.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;h3 id=&quot;foss--free-as-in-freedom-not-beer-open-source-software&quot;&gt;FOSS- Free (as in Freedom, not beer) Open Source Software&lt;/h3&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;The source code for the Linux kernel is “Open Source”, which really  just means you can go to GitHub
+and see all of the code that makes up the Linux kernel &lt;a href=&quot;https://github.com/torvalds/linux&quot;&gt;here&lt;/a&gt; You
+can take that code, modify it, change it, do anything you want to it.&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;The same can be said for many if not most of the Linux distributions floating around the internet.
+The source code can be modified and changed and given away as much as a person desires. There are
+some limitations based on licenses, but that’s a conversation for another day.&lt;/p&gt;
+
+&lt;p&gt;This is a huge difference from Windows and MacOS in that those companies make money by selling their
+operating systems, so they keep their code “proprietary” and don’t openly share their code.  You
+can’t take the source code for windows and modify it, or change it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A note about the word &lt;strong&gt;FREE&lt;/strong&gt; as used in this context.  ‘Free’ here means ability, it does not
+mean without cost.  While most variations of Linux are available for no cost, there are variations
+that charge for assorted features, addons, service etc.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;distributions&quot;&gt;Distributions&lt;/h3&gt;
+
+&lt;p&gt;Since the source code for the Linux kernel is open, and people are allowed and even encouraged take
+it and change it and add things to it, people do all of those things.  So when someone is going to
+switch to Linux, one of the first decisions to make is which distribution to use.&lt;/p&gt;
+
+&lt;p&gt;There are literally thousands of distributions floating around the internet, all of which do
+slightly different things, from different color schemes, to different updating methods.&lt;/p&gt;
+
+&lt;p&gt;Take a look at &lt;a href=&quot;https://distrowatch.com/&quot;&gt;Distrowatch&lt;/a&gt; to see a small sample of the available
+options out there.  (I’ll cover choosing a distribution in another post)&lt;/p&gt;</content><author><name></name></author><summary type="html">What is “Linux”?</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/general/2020/10/02/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-02T00:00:00-04:00</published><updated>2020-10-02T00:00:00-04:00</updated><id>http://localhost:4000/general/2020/10/02/why-linux</id><content type="html" xml:base="http://localhost:4000/general/2020/10/02/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
+
+&lt;p&gt;The first question in the process of switching from Windows or MacOS is pretty much always “Why   &lt;br /&gt;
+should I use Linux?” Which is a valid question, and an important one.  The answer to that question&lt;br /&gt;
+can shape a person’s path through the world of Linux. While people go to Linux communities and ask
+that question on daily basis, it’s ultimately  a question each person has to answer for themselves.&lt;/p&gt;
+
+&lt;p&gt;There are a few major reason for someone to switch to Linux&lt;/p&gt;
+
+&lt;h3 id=&quot;the-why-not-crowd&quot;&gt;The why not crowd&lt;/h3&gt;
+
+&lt;p&gt;Let’s be honest, this group already knows why they want to use Linux, this is the hobbyists. They’re
+going to spend hours finding the perfect distribution, tweaking it just right, and then blowing the
+whole thing away and trying something new.  It’s fun, it’s cheap entertainment, and they just want
+to play around with all the options out there.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-career-crowd&quot;&gt;The career crowd&lt;/h3&gt;
+
+&lt;p&gt;This is the group that wants to work in the IT field in some capacity and they want to use Linux on
+their personal machines so they’re fully familiar with it when they go to work in an enterprise and
+are confronted with 35,000 Linux servers they are now responsible for managing, or they’re software
+developers and want to develop on Linux for any number of reasons from ease of workflow, to
+available tools.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-privacy-crowd&quot;&gt;The privacy crowd&lt;/h3&gt;
+
+&lt;p&gt;This is probably the biggest influx of new users in the last few years.  Windows 10 collects a
+&lt;strong&gt;ton&lt;/strong&gt; of data on the users.  This is concerning to many people, and rightfully so.  So they’ve
+asked how to prevent this data collection, and one of the answers is inevitably “Switch to Linux!”
+With the source code being available and audited by anyone and everyone, it’s difficult to sneak in
+dirty rotten data collection tools to a Linux distribution, though not impossible.&lt;/p&gt;
+
+&lt;p&gt;Since many of the Linux distributions are built, distributed, and maintained by small groups of individuals, or
+non-profit organizations, there’s very little reason to collect user data.  The few major distributions maintained, managed, or owned by for profit companies (Primarily Canonical-Ubunutu, Suse-Suse &amp;amp; OpenSuse, RedHat-RedHat Enterprise Linux, Fedora, CentOS) are still heavily contributed to by the community, and have open source code.  Those companies make their money from support contracts sold to businesses, not from selling user data&lt;/p&gt;
+
+&lt;p&gt;While there are many reasons individuals chose to use Linux those are the three biggest reasons I
+see.&lt;/p&gt;
+
+&lt;p&gt;I’ll address &lt;em&gt;which&lt;/em&gt; Linux Distribution to use in another post. (Spoiler: It’s &lt;strong&gt;not&lt;/strong&gt; Kali, it’s
+&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry></feed>
