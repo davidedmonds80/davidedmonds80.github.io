@@ -1,4 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-03T11:37:31-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/general/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/general/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/general/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-10T17:34:43-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Planning my Own Cloud</title><link href="http://localhost:4000/self-hosting/2020/10/10/hosting-beginning.html" rel="alternate" type="text/html" title="Planning my Own Cloud" /><published>2020-10-10T00:00:00-04:00</published><updated>2020-10-10T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/10/10/hosting-beginning</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/10/10/hosting-beginning.html">&lt;h2 id=&quot;the-goal&quot;&gt;The Goal&lt;/h2&gt;
+
+&lt;p&gt;I’ve used cloud services pretty steadily for the last 10 years or so.  My documents, résumés,
+pictures, everything really, all lives in the cloud.  As companies and governments get more and more
+blatant about their disregard for our privacy in favor of their profits, I’ve moved from cloud
+service, to cloud service.  I’ve used everything from Google to iCloud, to Microsoft’s OneDrive, and
+ended up settling on NextCloud hosted in a GPDR compliant country.  Which is good, really good
+actually.  Except for one issue, it’s &lt;em&gt;slow&lt;/em&gt;, like dial-up slow.  As a place to archive it’s fine,
+but for anything I want to use on a semi-speedy basis, it’s essentially unusable. (Think finding a
+picture from a year ago to paste in a group chat)&lt;/p&gt;
+
+&lt;p&gt;So to have an option that is relatively speedy, but still as secure as I can get it, I’ve come to
+the conclusion that I need to self-host my own NextCloud instance.&lt;/p&gt;
+
+&lt;p&gt;Which sounds easy, and can be, assuming you only want to access your data on your home network.
+Which is a perfectly viable option for many people.&lt;/p&gt;
+
+&lt;p&gt;I like to be complex, and do things the hard way.  So here’s the End State goal:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Privately hosted &lt;a href=&quot;https://nextcloud.com/&quot;&gt;Nextcloud&lt;/a&gt; instance&lt;/li&gt;
+  &lt;li&gt;Privately hosted Website (very very future state)&lt;/li&gt;
+  &lt;li&gt;Internal DNS via &lt;a href=&quot;https://pi-hole.net/&quot;&gt;PiHole&lt;/a&gt; for ad blocking&lt;/li&gt;
+  &lt;li&gt;Reverse Proxy for traffic routing via &lt;a href=&quot;https://traefik.io/&quot;&gt;Traefik&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I think at this point everything will be running on an old laptop I’ve got laying around.  It’s got
+8G of RAM (upgradable) and a Core i5 so for my use case I think it should be able to handle
+everything, at least to begin with.&lt;/p&gt;
+
+&lt;p&gt;I’ll be running Docker, and I &lt;em&gt;think&lt;/em&gt; Docker Compose to manage the containers&lt;/p&gt;
+
+&lt;h3 id=&quot;the-tools&quot;&gt;The Tools&lt;/h3&gt;
+
+&lt;p&gt;Starting from the base up:&lt;/p&gt;
+
+&lt;h4 id=&quot;hardware&quot;&gt;Hardware&lt;/h4&gt;
+
+&lt;p&gt;The home network is Gig fiber to a Ubiquiti Amplifi mesh router&lt;/p&gt;
+
+&lt;p&gt;The Laptop in question is a Dell Latitude E6440 with a Core i5 and (currently) 8 gigs of Ram, with a
+relatively small SSD (120G), most of the storage will be hosted on an external 2TB SSD.&lt;/p&gt;
+
+&lt;h4 id=&quot;software&quot;&gt;Software&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Base Operating System: CentOS
+    &lt;ul&gt;
+      &lt;li&gt;As I’ve mentioned, in my day job I do some Linux Admin type stuff, and I’ve got a fair amount
+of experience with CentOS in a server role.  It does that very well.  It works, and I’m
+comfortable in the RHEL/Fedora/CentOS space.  I figure I might as well stick with something
+I’m comfortable with.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Docker/Docker Compose for container management
+    &lt;ul&gt;
+      &lt;li&gt;I’ll be using Docker compose for simplicity of managing the containers, for upgrades, repairs
+etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Nextcloud for most cloud functions
+    &lt;ul&gt;
+      &lt;li&gt;NextCloud offers an incredibly simple UI for others to use, as well as compatibility with
+pretty much every OS out there.  In a house with: Windows, Linux, ChromeOS, iOS, iPadOS;
+interoperability and ease of use is a &lt;strong&gt;huge&lt;/strong&gt; thing&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;PiHole for DNS/Ad Blocking
+    &lt;ul&gt;
+      &lt;li&gt;PiHole is great for dropping ad traffic in a blackhole never to report telemetry again.  This
+may end up running on a spare RasperryPi that I have laying around, but my intention at this
+time is to put it on the main server.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-path&quot;&gt;The Path&lt;/h3&gt;
+
+&lt;p&gt;This is where things start to get a bit muddy.  This is kind of what I’m thinking right now:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Work through some basic docker tutorials&lt;/li&gt;
+  &lt;li&gt;Work through some basic docker compose tutorials&lt;/li&gt;
+  &lt;li&gt;Add Traefik to the main server, and work with pointing it at different containers&lt;/li&gt;
+  &lt;li&gt;Install a NextCloud docker container&lt;/li&gt;
+  &lt;li&gt;Install a PiHole container&lt;/li&gt;
+  &lt;li&gt;Profit???&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;All of this is of course subject to whims of fate and time. So who knows what this path will look
+like in the end.  I’d like to think that I’m going to continue to update this as I go through the
+process, so we’ll see how that goes.&lt;/p&gt;</content><author><name></name></author><summary type="html">The Goal</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/beginners/linux/2020/10/04/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-04T00:00:00-04:00</published><updated>2020-10-04T00:00:00-04:00</updated><id>http://localhost:4000/beginners/linux/2020/10/04/why-linux</id><content type="html" xml:base="http://localhost:4000/beginners/linux/2020/10/04/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
+
+&lt;p&gt;The first question in the process of switching from Windows or MacOS is pretty much always “Why   &lt;br /&gt;
+should I use Linux?” Which is a valid question, and an important one.  The answer to that question&lt;br /&gt;
+can shape a person’s path through the world of Linux. While people go to Linux communities and ask
+that question on daily basis, it’s ultimately  a question each person has to answer for themselves.&lt;/p&gt;
+
+&lt;p&gt;There are a few major reason for someone to switch to Linux&lt;/p&gt;
+
+&lt;h3 id=&quot;the-why-not-crowd&quot;&gt;The why not crowd&lt;/h3&gt;
+
+&lt;p&gt;Let’s be honest, this group already knows why they want to use Linux, this is the hobbyists. They’re
+going to spend hours finding the perfect distribution, tweaking it just right, and then blowing the
+whole thing away and trying something new.  It’s fun, it’s cheap entertainment, and they just want
+to play around with all the options out there.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-career-crowd&quot;&gt;The career crowd&lt;/h3&gt;
+
+&lt;p&gt;This is the group that wants to work in the IT field in some capacity and they want to use Linux on
+their personal machines so they’re fully familiar with it when they go to work in an enterprise and
+are confronted with 35,000 Linux servers they are now responsible for managing, or they’re software
+developers and want to develop on Linux for any number of reasons from ease of workflow, to
+available tools.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-privacy-crowd&quot;&gt;The privacy crowd&lt;/h3&gt;
+
+&lt;p&gt;This is probably the biggest influx of new users in the last few years.  Windows 10 collects a
+&lt;strong&gt;ton&lt;/strong&gt; of data on the users.  This is concerning to many people, and rightfully so.  So they’ve
+asked how to prevent this data collection, and one of the answers is inevitably “Switch to Linux!”
+With the source code being available and audited by anyone and everyone, it’s difficult to sneak in
+dirty rotten data collection tools to a Linux distribution, though not impossible.&lt;/p&gt;
+
+&lt;p&gt;Since many of the Linux distributions are built, distributed, and maintained by small groups of individuals, or
+non-profit organizations, there’s very little reason to collect user data.  The few major distributions maintained, managed, or owned by for profit companies (Primarily Canonical-Ubunutu, Suse-Suse &amp;amp; OpenSuse, RedHat-RedHat Enterprise Linux, Fedora, CentOS) are still heavily contributed to by the community, and have open source code.  Those companies make their money from support contracts sold to businesses, not from selling user data&lt;/p&gt;
+
+&lt;p&gt;While there are many reasons individuals chose to use Linux those are the three biggest reasons I
+see.&lt;/p&gt;
+
+&lt;p&gt;I’ll address &lt;em&gt;which&lt;/em&gt; Linux Distribution to use in another post. (Spoiler: It’s &lt;strong&gt;not&lt;/strong&gt; Kali, it’s
+&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/beginners/linux/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/beginners/linux/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/beginners/linux/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
 
 &lt;p&gt;Linux is just an Operating system.  In the grand scheme of things it’s not much
 different from Windows, MacOS, iOS, iPadOS, Android, BSD or any other operating system.&lt;/p&gt;
@@ -39,43 +167,4 @@ switch to Linux, one of the first decisions to make is which distribution to use
 slightly different things, from different color schemes, to different updating methods.&lt;/p&gt;
 
 &lt;p&gt;Take a look at &lt;a href=&quot;https://distrowatch.com/&quot;&gt;Distrowatch&lt;/a&gt; to see a small sample of the available
-options out there.  (I’ll cover choosing a distribution in another post)&lt;/p&gt;</content><author><name></name></author><summary type="html">What is “Linux”?</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/general/2020/10/03/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/general/2020/10/03/why-linux</id><content type="html" xml:base="http://localhost:4000/general/2020/10/03/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
-
-&lt;p&gt;The first question in the process of switching from Windows or MacOS is pretty much always “Why   &lt;br /&gt;
-should I use Linux?” Which is a valid question, and an important one.  The answer to that question&lt;br /&gt;
-can shape a person’s path through the world of Linux. While people go to Linux communities and ask
-that question on daily basis, it’s ultimately  a question each person has to answer for themselves.&lt;/p&gt;
-
-&lt;p&gt;There are a few major reason for someone to switch to Linux&lt;/p&gt;
-
-&lt;h3 id=&quot;the-why-not-crowd&quot;&gt;The why not crowd&lt;/h3&gt;
-
-&lt;p&gt;Let’s be honest, this group already knows why they want to use Linux, this is the hobbyists. They’re
-going to spend hours finding the perfect distribution, tweaking it just right, and then blowing the
-whole thing away and trying something new.  It’s fun, it’s cheap entertainment, and they just want
-to play around with all the options out there.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-career-crowd&quot;&gt;The career crowd&lt;/h3&gt;
-
-&lt;p&gt;This is the group that wants to work in the IT field in some capacity and they want to use Linux on
-their personal machines so they’re fully familiar with it when they go to work in an enterprise and
-are confronted with 35,000 Linux servers they are now responsible for managing, or they’re software
-developers and want to develop on Linux for any number of reasons from ease of workflow, to
-available tools.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-privacy-crowd&quot;&gt;The privacy crowd&lt;/h3&gt;
-
-&lt;p&gt;This is probably the biggest influx of new users in the last few years.  Windows 10 collects a
-&lt;strong&gt;ton&lt;/strong&gt; of data on the users.  This is concerning to many people, and rightfully so.  So they’ve
-asked how to prevent this data collection, and one of the answers is inevitably “Switch to Linux!”
-With the source code being available and audited by anyone and everyone, it’s difficult to sneak in
-dirty rotten data collection tools to a Linux distribution, though not impossible.&lt;/p&gt;
-
-&lt;p&gt;Since many of the Linux distributions are built, distributed, and maintained by small groups of individuals, or
-non-profit organizations, there’s very little reason to collect user data.  The few major distributions maintained, managed, or owned by for profit companies (Primarily Canonical-Ubunutu, Suse-Suse &amp;amp; OpenSuse, RedHat-RedHat Enterprise Linux, Fedora, CentOS) are still heavily contributed to by the community, and have open source code.  Those companies make their money from support contracts sold to businesses, not from selling user data&lt;/p&gt;
-
-&lt;p&gt;While there are many reasons individuals chose to use Linux those are the three biggest reasons I
-see.&lt;/p&gt;
-
-&lt;p&gt;I’ll address &lt;em&gt;which&lt;/em&gt; Linux Distribution to use in another post. (Spoiler: It’s &lt;strong&gt;not&lt;/strong&gt; Kali, it’s
-&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry></feed>
+options out there.  (I’ll cover choosing a distribution in another post)&lt;/p&gt;</content><author><name></name></author><summary type="html">What is “Linux”?</summary></entry></feed>
