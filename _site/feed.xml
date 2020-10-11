@@ -1,4 +1,295 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-10T17:34:43-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Planning my Own Cloud</title><link href="http://localhost:4000/self-hosting/2020/10/10/hosting-beginning.html" rel="alternate" type="text/html" title="Planning my Own Cloud" /><published>2020-10-10T00:00:00-04:00</published><updated>2020-10-10T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/10/10/hosting-beginning</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/10/10/hosting-beginning.html">&lt;h2 id=&quot;the-goal&quot;&gt;The Goal&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-11T13:21:43-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Choosing a Linux Distro</title><link href="http://localhost:4000/beginners/2020/10/11/which-linux.html" rel="alternate" type="text/html" title="Choosing a Linux Distro" /><published>2020-10-11T00:00:00-04:00</published><updated>2020-10-11T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/11/which-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/11/which-linux.html">&lt;h2 id=&quot;so-many-choices-so-few-computers&quot;&gt;So Many choices, so few computers&lt;/h2&gt;
+
+&lt;p&gt;As I mentioned there are literally thousands of Linux distributions floating around the internet, so
+how is someone new to the world of Linux supposed to know which one is right for them? It can seem
+overwhelming at first glance, but lets take a look at a few things, like what makes up a “distro”
+(That’s the cool way to say distribution), what different distros offer, and what really matters
+when choosing a distro to install.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-a-distro-exactly&quot;&gt;What is a distro, exactly?&lt;/h2&gt;
+
+&lt;p&gt;Let’s start with the basics, what, exactly, is a Linux distribution?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linux_distribution&quot;&gt;Wikipedia&lt;/a&gt; has this to say:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;A Linux distribution (often abbreviated as distro) is an operating system made from a software collection that is based upon the Linux kernel and, often, a package management system. Linux users usually obtain their operating system by downloading one of the Linux distributions, which are available for a wide variety of systems ranging from embedded devices (for example, OpenWrt) and personal computers (for example, Linux Mint) to powerful supercomputers (for example, Rocks Cluster Distribution).
+&lt;br /&gt;A typical Linux distribution comprises a Linux kernel, GNU tools and libraries, additional software, documentation, a window system (the most common being the X Window System), a window manager, and a desktop environment.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So a Linux distro is really just a collection of software, libraries, combined with a version(s) of
+the Linux kernel.  All packaged together to make a working operating system.&lt;/p&gt;
+
+&lt;p&gt;The major differences between distros really boil down to the package manager, the default Desktop
+Environment (we’ll get to what that is in a bit), and what software comes included.&lt;/p&gt;
+
+&lt;h3 id=&quot;package-managers&quot;&gt;Package Managers&lt;/h3&gt;
+
+&lt;p&gt;The package manager is just the tool used to install software that doesn’t come bundled with the
+distribution.  There is great debate about which package manager is the “best”, and like all things
+opinion, there is no one right answer. It really comes down to what
+features/options/widgets/gadgets/geegaws are included, and what matters to the user.  All packages
+managers do the same thing: they find software in a repository and install it on the computer, they
+also update the software when new versions come out.&lt;/p&gt;
+
+&lt;p&gt;Some have a GUI (Graphical User Interface) so you don’t have to remember the exact commands to type
+into a terminal, which is nice for those that like the pointy-clicky method for interacting with
+their computers. Most modern Linux distros include a package manager with a GUI, but not all.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A word of advice to new users: Don’t let a GUI package manager option determine your decision, if
+you’re going to use Linux, you might as well get over being afraid of the terminal, you &lt;strong&gt;will&lt;/strong&gt;
+need it at some point&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;desktop-environments&quot;&gt;Desktop Environments&lt;/h3&gt;
+
+&lt;p&gt;This is the thing that makes a computer look a certain way, it’s how the desktop background is
+applied, what the icons and colors are, and most include file managers, text editors, those nifty
+bars that show you what applications are open and what time it is, and all the other stuff that
+makes up the majority of user interactions with a computer.  At some point I’ll expound ad nauseam
+about Desktop Environments. Not here though, I will provide a quick list and description of each of
+them though:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnome.org/&quot;&gt;Gnome&lt;/a&gt; Definitely different than Windows or OSX, lots of stuff included,
+not lightweight at all&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://xfce.org/&quot;&gt;XFCE&lt;/a&gt; Pretty lightweight, very customizable, very solid set of software
+included&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cinnamon_(desktop_environment)&quot;&gt;Cinnamon&lt;/a&gt; Very similar to Windows,
+very solid, based on an older version of Gnome, but still updated and maintained regularly&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mate-desktop.org/&quot;&gt;MATE&lt;/a&gt; also based on an older version of Gnome, again still very
+popular and well maintained.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kde.org/&quot;&gt;KDE&lt;/a&gt; Another very popular DE with a good looking interface, and lots of very
+nice themes, animations, and looks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are several more, which I’ll cover in another post, but these are 5 of the more popular
+options.&lt;/p&gt;
+
+&lt;p&gt;Something important to remember: You can install pretty much any Desktop Environment on any distro,
+so even if a distro ships with a DE you don’t like, you can change it to one that you do like,
+pretty easily.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-recommendations&quot;&gt;My Recommendations&lt;/h2&gt;
+
+&lt;p&gt;This post is likely to become pretty big over time, and I absolutely detest being forced to read
+7,000 words to find the information I want.  So I’m going to put my generic recommendations right
+here, kinda near the top.&lt;/p&gt;
+
+&lt;h3 id=&quot;ubuntu&quot;&gt;&lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Ubuntu is pretty universally recommended for new Linux users, with good reason.  The company that
+manages it (Canonical) is stable and has been around for a long time.  It’s not going anywhere, it’s
+incredibly popular, and I don’t know that I’ve come across software for Linux that won’t run on it.
+It uses the Gnome desktop environment by default, which is very good looking, yet doesn’t attempt to
+emulate either the Windows or the OSX look and feel.&lt;/p&gt;
+
+&lt;p&gt;Ubuntu is a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stable&lt;/code&gt; release which means updates are packaged and made available in intervals, but
+they are pretty well tested by the time they’re released.  So the software will be a little slow,
+but things shouldn’t break when they get updates.&lt;/p&gt;
+
+&lt;p&gt;If you’re new, and just want to see what this “Linux thing is all about”, use Ubuntu.&lt;/p&gt;
+
+&lt;h3 id=&quot;fedora&quot;&gt;&lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Fedora is another very solid choice for new users, especially people that are interested in working
+in IT, or in supporting Linux in an enterprise environment.  Fedora is the bleeding edge of what
+will become Red Hat Enterprise Linux (RHEL), which is very widely used by large companies,
+especially in the U.S. (Ubuntu/Canonical seems to have more of the market share in other countries,
+though RHEL is still widely used)&lt;/p&gt;
+
+&lt;p&gt;Fedora uses the DNF package manger which is very solid, and pretty much all Linux software is available in the RPM format used by the DNF package manager.&lt;/p&gt;
+
+&lt;p&gt;Fedora is also a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stable&lt;/code&gt; release, but packages seem to be released faster than Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;If your new and think you want to work on Linux for a living, give Fedora a try, or if you’re new
+and just want something simple that works, it’s a good option in that scenario as well.&lt;/p&gt;
+
+&lt;h3 id=&quot;endeavouros&quot;&gt;&lt;a href=&quot;https://endeavouros.com/&quot;&gt;EndeavourOS&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;EndeavourOS is a very different beastie than my other two generic recommendations. It’s a new
+distro (at the time of this writing it’s been around for just over a year) but it is based on a
+distro that’s been around for a long time, so even if the EndeavourOS team called it quits (unlikely
+I believe) an installed instance of EdeavourOS could be used pretty easily.  EndeavourOS is based on
+Arch, a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rolling&lt;/code&gt; release distro, which means packages are available essentially as soon as the
+developers make them available to the public.  Arch is known for being difficult to install (I’ve
+never tried it, but there are tutorials and guides to make it easier), EndeavourOS however has a
+“click next” type installer which makes it very simple to install, and it works quite well in my
+experience.&lt;/p&gt;
+
+&lt;p&gt;If you want to play, and get a chance to really break things, or if you’re running very new hardware
+this really might be the choice for you.&lt;/p&gt;
+
+&lt;h3 id=&quot;do-not-install-kali&quot;&gt;Do Not Install Kali&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;I’m new to Linux and I want to install Kali, how do I do it?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is a question I’ve seen countless times.  The answer is that you don’t.  Kali is not a Linux
+distro meant to be used daily, it’s not meant for new users, it’s just not.&lt;/p&gt;
+
+&lt;p&gt;According to the team that maintains Kali:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If you are unfamiliar with Linux generally, if you do not have at least a basic level of competence in administering a system, if you are looking for a Linux distribution to use as a learning tool to get to know your way around Linux, or if you want a distro that you can use as a general purpose desktop installation, Kali Linux is probably not what you are looking for.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Yes.  I know.  It looks cool on Mr. Robot.  You can make any version of Linux look like that.  Yes
+it’s got &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l33t h@x0r&lt;/code&gt; tools.  You can install those on just about any distro.  (You shouldn’t unless
+you understand what they’re for and how they work though.)&lt;/p&gt;
+
+&lt;p&gt;Kali is a tool which has a very specific use case, if you meet that use case, I’m willing to bet
+you’re not reading this website looking for basic Linux information.&lt;/p&gt;
+
+&lt;p&gt;If you want to use Kali, you should have enough knowledge to figure out how to install it with out
+asking for help on Reddit.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I know it comes up in reference to “security and Linux” a lot.  It’s not that kind of security.
+It’s a tool to see how secure a network is.  If you’re looking to hide your activity on the
+internet, you want &lt;a href=&quot;https://www.qubes-os.org/&quot;&gt;QubesOS&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;distro-options&quot;&gt;Distro Options&lt;/h2&gt;
+
+&lt;p&gt;If you want some more information, or want to know more about different distros, I’m going to try to
+keep this section updated, with the distros I come across that I see frequently.  This is not a
+comprehensive list by any means, just some info on the distros I see referenced frequently with some
+information about them.&lt;/p&gt;
+
+&lt;h3 id=&quot;stable-vs-rolling&quot;&gt;Stable vs Rolling&lt;/h3&gt;
+
+&lt;p&gt;There are two major types of release/update cycles:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Stable:  Stable doesn’t mean “won’t break” it just means releases for the distro (not
+applications) are packaged together and sent out in one big chunk, so you get things like: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ubuntu
+20.04 Focal Fossa&lt;/code&gt; which will have all of the core things that make up the Distro in one single
+update package, where the system is upgraded from the old version to the new version.  These
+updates are generally tested together and in theory everything should play nicely. Like all things
+computery, that may not always hold true.  The applications not considered part of the core distro
+will still be updated when the app developers make their updates available, so updates will still
+happen outside of the major release for the distro.&lt;/li&gt;
+  &lt;li&gt;Rolling:  Rolling release cycles are just that, constant (by comparison to stable) updates, when a
+part of the kernel is updated, the package is made available and users can update just that
+little piece.  This does mean that there is a potential for things to not work quite right with a
+specific system configuration, but these things are generally quickly identified and documented.
+Personally I’ve never had a problem with a rolling release, but I’m just one person.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-my-list-is-formatted&quot;&gt;How My List is formatted&lt;/h3&gt;
+
+&lt;p&gt;Many distros are based on a different distro, or upstream distro, which can also be installed, so as
+I go through this list I’ll use different level headings to show if a distro is forked from another
+major distro or not.  It looks like this:&lt;/p&gt;
+
+&lt;h3 id=&quot;top-level-distro&quot;&gt;Top Level Distro&lt;/h3&gt;
+
+&lt;h4 id=&quot;fork-of-the-top-level-distro&quot;&gt;Fork of the top level Distro&lt;/h4&gt;
+
+&lt;h5 id=&quot;fork-of-the-fork&quot;&gt;Fork of the Fork&lt;/h5&gt;
+
+&lt;p&gt;Each Heading will be a Link to the distro home page which will have more information than I’m going
+to include, and more up to date information.  While I could copy and paste that information here,
+that seems silly, and frankly I don’t want to.  What I will do is make it easy for you to go find
+information, and make your own decisions.&lt;/p&gt;
+
+&lt;h3 id=&quot;debian&quot;&gt;&lt;a href=&quot;https://www.debian.org/intro/about&quot;&gt;Debian&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Debian is one of the longer running distros, and is what Ubuntu is forked from.  Very solid, though
+it’s not as user friendly as Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;All of the Debian forks listed below are stable releases using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt&lt;/code&gt; package manager, and all
+have access to the same repositories.&lt;/p&gt;
+
+&lt;h4 id=&quot;ubuntu-1&quot;&gt;&lt;a href=&quot;https://ubuntu.com&quot;&gt;Ubuntu&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Probably one of the most widely used distros ever (for desktop users), run by Canonical it’s a very
+very popular distro.  It’s so widely used that most of the time when I find instructions for how to
+do something in Linux the instructions default to Ubuntu.  Most software is packaged for Ubuntu,
+    which makes using it day to day quite simple.  The default desktop environment is Gnome though
+    there are specific images for for other DEs&lt;/p&gt;
+
+&lt;h5 id=&quot;mint&quot;&gt;&lt;a href=&quot;https://linuxmint.com/&quot;&gt;Mint&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;Mint came about as an Ubuntu fork, and has grown to have it’s own dedicated following, the Mint team
+is responsible for the Cinnamon desktop environment.  Mint is a truly great distribution for helping
+someone transition to Linux from windows, as many of the Windows behaviours (bottom left “start
+menu”, right click on the desktop, etc.) are replicated in Cinnamon.  It also uses the same package
+manager, and repositories for Ubuntu, which means there’s a huge quantity of software easily
+available, as well as many guides for how to do things, or solve problems on the internet.&lt;/p&gt;
+
+&lt;h5 id=&quot;xubuntu&quot;&gt;&lt;a href=&quot;https://xubuntu.org/&quot;&gt;Xubuntu&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;This is Ubuntu with the XFCE Desktop Environment&lt;/p&gt;
+
+&lt;h5 id=&quot;lubutnu&quot;&gt;&lt;a href=&quot;https://lubuntu.net/&quot;&gt;Lubutnu&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;This is Ubuntu with the LXDE/LXQT Desktop Environment, which makes the distro very lightweight.&lt;/p&gt;
+
+&lt;h5 id=&quot;kubuntu&quot;&gt;&lt;a href=&quot;https://www.kubuntu.org/&quot;&gt;Kubuntu&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;This is Ubuntu with the KDE Desktop Environment&lt;/p&gt;
+
+&lt;h3 id=&quot;the-red-hat-family&quot;&gt;The Red Hat Family&lt;/h3&gt;
+&lt;p&gt;I’m grouping 3 distros together here, although they’re not exactly forked from each other, they are
+all related.&lt;/p&gt;
+
+&lt;h4 id=&quot;red-hat-enterprise-linux-rhel&quot;&gt;&lt;a href=&quot;https://www.redhat.com/en&quot;&gt;Red Hat Enterprise Linux (RHEL)&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Red Hat is one of the giants in the Linux world.  In the U.S. I would guess there are more RHEL
+servers installed than any other, by a wide margin.&lt;/p&gt;
+
+&lt;p&gt;RHEL is available and can be installed as a workstation, but it’s not Free, it’s $99 for a license at the time of this writing, you can buy it &lt;a href=&quot;https://www.redhat.com/en/store/linux-platforms&quot;&gt;here&lt;/a&gt; if that something that interests you.  Personally I wouldn’t. RHEL is really meant to be a server operating system&lt;/p&gt;
+
+&lt;h4 id=&quot;fedora-1&quot;&gt;&lt;a href=&quot;https://getfedora.org/en/&quot;&gt;Fedora&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Fedora is really solid stable release distro (It’s what I’m currently using) Gnome is the default
+desktop environment that ships with it. &lt;a href=&quot;https://spins.fedoraproject.org/&quot;&gt;Fedora Spins&lt;/a&gt; offer several other options for desktop environments&lt;/p&gt;
+
+&lt;p&gt;Fedora is the upstream source for a lot of the packages that go into RHEL, but it is technically a
+different project and RHEL isn’t really forked from it.  If it were a Facebook status relationship
+it would be “It’s Complicated.” Fedora is really the best option for those that are interested in
+understanding and working with RHEL, and want to try it as a workstation.&lt;/p&gt;
+
+&lt;h4 id=&quot;centos&quot;&gt;&lt;a href=&quot;https://www.centos.org/&quot;&gt;CentOS&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;CentOS is essentially the free version of RHEL. It’s primary use case is as an appliance or server,
+it’s not really geared towards being a workstation. The source code is provided by Red Hat, and my
+understanding is that CentOS is used as a test bed for some RHEL features.  If you want to host your
+own server of some sort, this is an excellent choice, since many of the things you might want to do
+have been done by large companies, the odds that you’ll be able to find an answer for any problems
+you encounter are very high.&lt;/p&gt;
+
+&lt;h3 id=&quot;open-suse&quot;&gt;&lt;a href=&quot;https://www.opensuse.org/&quot;&gt;Open Suse&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Suse Linux is one of the older Linux distributions around, it’s been used in the corporate world for
+a long time, and there are still services that use it almost exclusively.  OpenSuse is the free
+version of Suse.  (Big shocker there, I know) Suse uses a different package manager than the
+Fedora/Red Hat/CentOS ecosystem, but that package manager does use RPM files, which means just about
+anything that will run on the RHEL type distros will work with Suse.  It’s a bit of a niche distro,
+but it does have something very few (if any) other do, both a rolling and a stable release version.
+Which makes it very useful for people that are developing for or supporting Suse servers.  It’s
+fairly newbie friendly, and has strong community support, if not a huge community of users.&lt;/p&gt;
+
+&lt;h3 id=&quot;i-use-arch-btw&quot;&gt;I use &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; btw&lt;/h3&gt;
+&lt;p&gt;Arch Linux and “I use Arch btw” have become a bit of a meme on the internet.  There was a point in
+time when Arch users were known to tell people at every opportunity that they used Arch, it was
+viewed by some as a badge of honor.  That is because Arch is not something that is easy to install,
+or manage. If installing Linux is riding a bicycle installing Arch is like getting a box of parts
+that have to be assembled. In other words you have to read carefully and follow directions, and understand what your machine is doing to successfully install Arch.  If you want to learn about how your operating system works, Arch is a great choice, it’s a rolling release distro which ensures the very latest packages are available, and it provides really granular control of your machine.&lt;/p&gt;
+
+&lt;p&gt;Arch has brought one of the single best resources to the Linux community in the &lt;a href=&quot;https://wiki.archlinux.org/index.php/Main_page&quot;&gt;ArchWiki&lt;/a&gt; This is a truly fantastic resource for anyone using Linux.  Go ahead and bookmark it.  While the instructions are all geared towards Arch users, the information typically applies across the board, even if the specific instructions don’t.&lt;/p&gt;
+
+&lt;h4 id=&quot;endeavouros-1&quot;&gt;&lt;a href=&quot;https://endeavouros.com/&quot;&gt;EndeavourOS&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Arch with training wheels, well mostly just Arch with a GUI “click next” installer, you still get
+all of the benefits (and challenges) of a rolling release with a simple install method. The
+installer provided by the EOS team allows for granular control of the packages, or a simple
+“recommended” install option.  The installer works well, and will have you up and running pretty
+quickly.&lt;/p&gt;
+
+&lt;h4 id=&quot;manjaro&quot;&gt;&lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;If EndeavourOS is arch with training wheels, Manjaro is a tricycle.  While Manjaro is still
+technically a rolling release the team behind Manajaro often holds packages back for a week or so to
+hopefully catch any major failures before they’re released to the Manjaro community.  As a result
+the distro is fairly stable.&lt;/p&gt;
+
+&lt;h3 id=&quot;gentoo&quot;&gt;&lt;a href=&quot;https://www.gentoo.org/&quot;&gt;Gentoo&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To stretch an analogy to the point of breaking, if Arch is a bicycle you have to assemble, Gentoo is
+a pile of metal that has to be formed in to parts to be assembled into a bicycle.  It is designed to
+be &lt;strong&gt;exactly&lt;/strong&gt; what you need and nothing more, nothing less.  Being this granular requires some
+additional work on your part.  Again, once you get it working, you will know in great detail how
+your machine works.&lt;/p&gt;
+
+&lt;h3 id=&quot;linux-from-scratch-lfs&quot;&gt;&lt;a href=&quot;http://www.linuxfromscratch.org/&quot;&gt;Linux from Scratch (LFS)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;LFS is not a pile of metal to build a bicycle, LFS is a list of locations of ore, instructions on
+how to mine the ore, create the parts, and assemble the bicycle.  LFS is really more of a training
+tool than an actual distro meant to be used.  LFS is a fantastic way to learn about how Linux works
+at a very low level.&lt;/p&gt;</content><author><name></name></author><summary type="html">So Many choices, so few computers</summary></entry><entry><title type="html">Planning my Own Cloud</title><link href="http://localhost:4000/self-hosting/2020/10/10/hosting-beginning.html" rel="alternate" type="text/html" title="Planning my Own Cloud" /><published>2020-10-10T00:00:00-04:00</published><updated>2020-10-10T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/10/10/hosting-beginning</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/10/10/hosting-beginning.html">&lt;h2 id=&quot;the-goal&quot;&gt;The Goal&lt;/h2&gt;
 
 &lt;p&gt;I’ve used cloud services pretty steadily for the last 10 years or so.  My documents, résumés,
 pictures, everything really, all lives in the cloud.  As companies and governments get more and more
@@ -87,7 +378,7 @@ time is to put it on the main server.&lt;/li&gt;
 
 &lt;p&gt;All of this is of course subject to whims of fate and time. So who knows what this path will look
 like in the end.  I’d like to think that I’m going to continue to update this as I go through the
-process, so we’ll see how that goes.&lt;/p&gt;</content><author><name></name></author><summary type="html">The Goal</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/beginners/linux/2020/10/04/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-04T00:00:00-04:00</published><updated>2020-10-04T00:00:00-04:00</updated><id>http://localhost:4000/beginners/linux/2020/10/04/why-linux</id><content type="html" xml:base="http://localhost:4000/beginners/linux/2020/10/04/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
+process, so we’ll see how that goes.&lt;/p&gt;</content><author><name></name></author><summary type="html">The Goal</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/beginners/2020/10/04/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-04T00:00:00-04:00</published><updated>2020-10-04T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/04/why-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/04/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
 
 &lt;p&gt;The first question in the process of switching from Windows or MacOS is pretty much always “Why   &lt;br /&gt;
 should I use Linux?” Which is a valid question, and an important one.  The answer to that question&lt;br /&gt;
@@ -126,7 +417,7 @@ non-profit organizations, there’s very little reason to collect user data.  Th
 see.&lt;/p&gt;
 
 &lt;p&gt;I’ll address &lt;em&gt;which&lt;/em&gt; Linux Distribution to use in another post. (Spoiler: It’s &lt;strong&gt;not&lt;/strong&gt; Kali, it’s
-&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/beginners/linux/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/beginners/linux/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/beginners/linux/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
+&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/beginners/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
 
 &lt;p&gt;Linux is just an Operating system.  In the grand scheme of things it’s not much
 different from Windows, MacOS, iOS, iPadOS, Android, BSD or any other operating system.&lt;/p&gt;

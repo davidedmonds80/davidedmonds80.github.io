@@ -2,7 +2,7 @@
 layout: post
 title:  "What is Linux anyway?"
 date:   2020-10-03
-categories: Beginners Linux 
+categories: Beginners 
 ---
 
 ## What is "Linux"?

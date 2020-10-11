@@ -2,7 +2,7 @@
 layout: post
 title:  "Why Use Linux?"
 date:   2020-10-04
-categories: Beginners Linux
+categories: Beginners 
 ---
 
 ##  Why Linux?                                                                                      
