@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Step 1-Laying the Groundwork | Random Musings</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Step 1-Laying the Groundwork" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="From the Bottom Up" />
+<meta property="og:description" content="From the Bottom Up" />
+<link rel="canonical" href="http://localhost:4000/self-hosting/2020/10/12/step1.html" />
+<meta property="og:url" content="http://localhost:4000/self-hosting/2020/10/12/step1.html" />
+<meta property="og:site_name" content="Random Musings" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-12T13:18:40-04:00" />
+<script type="application/ld+json">
+{"description":"From the Bottom Up","headline":"Step 1-Laying the Groundwork","dateModified":"2020-10-12T13:18:40-04:00","datePublished":"2020-10-12T13:18:40-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/self-hosting/2020/10/12/step1.html"},"url":"http://localhost:4000/self-hosting/2020/10/12/step1.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Random Musings" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Random Musings</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/">Home</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Step 1-Laying the Groundwork</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-10-12T13:18:40-04:00" itemprop="datePublished">Oct 12, 2020
+      </time></p>
+  </header>
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="from-the-bottom-up">From the Bottom Up</h2>
+
+<p>Knowing where I want to go, means I know exactly where I need to start.  I’ve got the hardware, but
+it’s currently running EndeavourOS, and that’s not going to work for me.  I want to run it on
+CentOS, and knowing I’ll be accessing it remotely, means I should be able to do a minimal install of
+CentOS on the hardware and attach my external storage as part of the file system.</p>
+
+<h2 id="the-process">The Process</h2>
+
+<p>My Goal here was to:</p>
+<ul>
+  <li>Install CentOS 7</li>
+  <li>Install Docker</li>
+  <li>Test the docker install</li>
+  <li>Install Docker Compose</li>
+  <li>Test the basics to make sure Docker &amp; Docker Compose were working as intended.</li>
+</ul>
+
+<blockquote>
+  <p>No plan survives contact with the <s>Enemy</s> Computer</p>
+</blockquote>
+
+<h3 id="the-operating-system">The Operating System</h3>
+
+<p>I had a whole stack of issues getting CentOS to work, everything from struggles with bad USB drives
+(maybe?) to the machine sleeping whenever it felt like it.  I suspect most of those struggles were
+my own doing, nonetheless…off with it’s head!!  As it were.</p>
+
+<p>I did actually get CentOS kinda working, and I got docker installed, but I screwed up the install
+process and ended up installing the entire OS on my external drive, which was a not-good thing.</p>
+
+<p>I ended up using Fedora Server<sup id="fnref:F32" role="doc-noteref"><a href="#fn:F32" class="footnote">1</a></sup> instead of CentOS. The install process seemed to go more smoothly,
+perhaps because I’d fixed some of the bugs in my process, but whatever the reason may be, I
+currently have Fedora 32 installed on my laptop, which is hardwired<sup id="fnref:wifi" role="doc-noteref"><a href="#fn:wifi" class="footnote">2</a></sup> to a dumb switch hanging off my
+router.  Nifty.  DHCP reservation with a name gives me pseudo-DNS access to my laptop, including the
+Fedora Server GUI which I really didn’t know was a “thing”.  The GUI is pretty nice, but mostly
+useless for what I need, it works well and all, but I prefer the command line for most things, but I
+do like the pretty pictures and graphs it gives me.</p>
+
+<p>When I re-installed Fedora for the (I think 7<sup>th</sup>) last time I managed to setup the drives the correct
+way.</p>
+
+<p>Volume Groups:</p>
+
+<p><img src="/assets/ent_vgs.png" alt="enterprise_vols" /></p>
+
+<p>The Main OS Volume Group:</p>
+
+<p><img src="/assets/ent_fedora_vg.png" alt="fedora_vg" /></p>
+
+<p>The Data Volume Group:</p>
+
+<p><img src="/assets/ent_data_vg.png" alt="data_vg" /></p>
+
+<p><sup><em>Note the pretty pictures from the Fedora Server GUI.  Ain’t they pretty?</em></sup></p>
+
+<p>I’ve got two VGs, one for the data, and another for the OS type files. In this case they are on
+separate physical drives.  This should in theory allow me to expand if I need more storage by simply adding an additional drive(s), this should also allow the system to boot in the event something happens to the external drive, or it doesn’t mount right.  The internal drive will host most of the crucial functions this server will be handling, while the external will be used for data storage, i.e. my NextCloud storage.</p>
+
+<p>I also setup key-based authentication on my server to allow me to authenticate from my laptop to the
+server without having to type in a password.  While you can use the <code class="language-plaintext highlighter-rouge">ssh-copy-id</code> method, I
+actually used the Fedora Server GUI for that, which worked like a champ, but I couldn’t find a way
+to prevent password based SSH attempts in the GUI.  Removing that was easy enough (see the command
+reference I used in the references section. <sup id="fnref:sshd" role="doc-noteref"><a href="#fn:sshd" class="footnote">3</a></sup>)</p>
+
+<h3 id="docker">Docker!</h3>
+
+<p>Thankfully Docker provides a very solid install guide for installing the docker-engine<sup id="fnref:dock-guide" role="doc-noteref"><a href="#fn:dock-guide" class="footnote">4</a></sup>
+unfortunately the base install process doesn’t quite work for Fedora 32.  With some very very clever
+Google-fu, googling the error, led me to an open Bug report<sup id="fnref:bug" role="doc-noteref"><a href="#fn:bug" class="footnote">5</a></sup>, with an additional step needed to complete the install, once that was done:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">"hello-world"</span> image from the Docker Hub.
+    <span class="o">(</span>amd64<span class="o">)</span>
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ <span class="nv">$ </span>docker run <span class="nt">-it</span> ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre></div></div>
+
+<p>BOOM!  Docker installed.</p>
+
+<h2 id="resources">Resources</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:F32" role="doc-endnote">
+      <p><a href="https://getfedora.org/en/server/download/">Fedora 32</a> <a href="#fnref:F32" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:wifi" role="doc-endnote">
+      <p>We’re not going to talk about wifi. OK? <a href="#fnref:wifi" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:sshd" role="doc-endnote">
+      <p>The tutorial I used can be found <a href="https://ostechnix.com/configure-ssh-key-based-authentication-linux/">here</a> but the short version is: Put the key file on the remote server, turn off password based authentication in the <code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code> file, and restart ssh. <a href="#fnref:sshd" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:dock-guide" role="doc-endnote">
+      <p>The Install guide can be found <a href="https://docs.docker.com/engine/install/fedora/">here</a> <a href="#fnref:dock-guide" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:bug" role="doc-endnote">
+      <p>The issue stems from the fact that cgroups v2 isn’t supported by containerd 1.3 or lower.  The fix recommended by the docker team can be found <a href="https://github.com/docker/for-linux/issues/955#issuecomment-694825085">here</a> <a href="#fnref:bug" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div><a class="u-url" href="/self-hosting/2020/10/12/step1.html" hidden></a>
+</article>
+
+
+<div class="post-categories">
+  <hr><br>
+  <h4>Posted In:</h4>
+  
+  
+  <a href="/categories/#Self-Hosting">Self-Hosting</a>
+  
+  
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Random Musings</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Random Musings</li><li><a class="u-email" href="mailto:web@edmonds.site">web@edmonds.site</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/davidedmonds80"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">davidedmonds80</span></a></li><li><a href="https://www.twitter.com/dazeedmonds"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dazeedmonds</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
