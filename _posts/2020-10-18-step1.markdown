@@ -99,6 +99,55 @@ For more examples and ideas, visit:
 
 BOOM!  Docker installed.
 
+#### DNS Is a PITA
+
+![always_dns](/assets/alwaysdns.jpg)
+
+I had some issues around DNS when installing Docker, which took a long, convoluted path to fix, and
+I honestly don't remember everything I did to get it working, I restarted Docker, and built (and
+later removed) a docker daemon.conf file, but it did work, right up until I tried to get Docker
+compose working.  I want to put the fix here because I think it should fix DNS issues within Docker
+as well as Docker compose.  
+
+The short version is that in Fedora/RedHat/CentOS recent versions the OS uses `nftables` by default, instead of `iptables`; this allows for better support of IPv4 and IPv6 addresses and such. The issue is that docker doesn't like `nftbles`, so that's fun.  It's easily fixable by modifying a single line in the `firewalld.conf` file. Simply changing the line: `FirewalldBackend=nftables` to:
+`FirewalldBackend=iptables` will fix the issue.  The Bug report and fix can be found
+[here](https://github.com/docker/for-linux/issues/957).  Ideally that will be fixed in the future,
+and it won't be required.  
+
+### Docker-Compose
+
+Docker-compose is essentially a tool that simplifies the building of applications. While many
+applications run on a single server and serve a single function using just a convoluted collection
+bash script, python scripts, rust files, basic libraries etc. the vast majority of applications in
+the world use a lot of assorted components: a web server, a database, a script that pulls data from
+another source, etc. Compose is a simple way to bundle all of these things together to create
+multiple containers that all talk to each other to create a full fledge application, which can be
+started with just a single command.  
+
+Docker-compose is written and provided by the team that maintains Docker, and the documentation can
+be found in the same location ( [Docker-compose getting started](https://docs.docker.com/compose/gettingstarted/) ) The documentation is very very solid, and provides everything needed to get up and running.  
+
+Aside from the aforementioned DNS issue, I really had no issues getting compose up and running. 
+
+
+## Current state
+
+- Installed <s>CentOS 7</s> Fedora 32
+- Installed Docker
+- Tested the docker install
+- Installed Docker Compose
+- Tested the basics to make sure Docker & Docker Compose were working as intended.
+
+All told this took me about 10-12 hours, mostly fighting with the CentOS install. I spread that out
+over a couple of weekends, and some evenings, mixed in with the other things life demands I do.  
+
+## Next Steps:
+- Install NextCloud
+- Figure out how to actually effectively host NextCloud
+- Sort out the reverse proxy methods, and if I actually need one or not.  I expect that I will use
+  traefik for a reverse proxy just because it looks pretty straightforward to learn, and it's wildly
+  popular.  
+
 
 ## Resources
 

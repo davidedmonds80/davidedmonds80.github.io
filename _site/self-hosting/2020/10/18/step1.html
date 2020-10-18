@@ -9,13 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="From the Bottom Up" />
 <meta property="og:description" content="From the Bottom Up" />
-<link rel="canonical" href="http://localhost:4000/self-hosting/2020/10/12/step1.html" />
-<meta property="og:url" content="http://localhost:4000/self-hosting/2020/10/12/step1.html" />
+<link rel="canonical" href="http://localhost:4000/self-hosting/2020/10/18/step1.html" />
+<meta property="og:url" content="http://localhost:4000/self-hosting/2020/10/18/step1.html" />
 <meta property="og:site_name" content="Random Musings" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-10-12T13:18:40-04:00" />
+<meta property="article:published_time" content="2020-10-18T09:51:52-04:00" />
 <script type="application/ld+json">
-{"description":"From the Bottom Up","headline":"Step 1-Laying the Groundwork","dateModified":"2020-10-12T13:18:40-04:00","datePublished":"2020-10-12T13:18:40-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/self-hosting/2020/10/12/step1.html"},"url":"http://localhost:4000/self-hosting/2020/10/12/step1.html","@context":"https://schema.org"}</script>
+{"description":"From the Bottom Up","headline":"Step 1-Laying the Groundwork","dateModified":"2020-10-18T09:51:52-04:00","datePublished":"2020-10-18T09:51:52-04:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/self-hosting/2020/10/18/step1.html"},"url":"http://localhost:4000/self-hosting/2020/10/18/step1.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Random Musings" /></head>
 <body><header class="site-header" role="banner">
@@ -40,7 +40,7 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">Step 1-Laying the Groundwork</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2020-10-12T13:18:40-04:00" itemprop="datePublished">Oct 12, 2020
+      <time class="dt-published" datetime="2020-10-18T09:51:52-04:00" itemprop="datePublished">Oct 18, 2020
       </time></p>
   </header>
   <div class="post-content e-content" itemprop="articleBody">
@@ -141,6 +141,58 @@ For more examples and ideas, visit:
 
 <p>BOOM!  Docker installed.</p>
 
+<h4 id="dns-is-a-pita">DNS Is a PITA</h4>
+
+<p><img src="/assets/alwaysdns.jpg" alt="always_dns" /></p>
+
+<p>I had some issues around DNS when installing Docker, which took a long, convoluted path to fix, and
+I honestly don’t remember everything I did to get it working, I restarted Docker, and built (and
+later removed) a docker daemon.conf file, but it did work, right up until I tried to get Docker
+compose working.  I want to put the fix here because I think it should fix DNS issues within Docker
+as well as Docker compose.</p>
+
+<p>The short version is that in Fedora/RedHat/CentOS recent versions the OS uses <code class="language-plaintext highlighter-rouge">nftables</code> by default, instead of <code class="language-plaintext highlighter-rouge">iptables</code>; this allows for better support of IPv4 and IPv6 addresses and such. The issue is that docker doesn’t like <code class="language-plaintext highlighter-rouge">nftbles</code>, so that’s fun.  It’s easily fixable by modifying a single line in the <code class="language-plaintext highlighter-rouge">firewalld.conf</code> file. Simply changing the line: <code class="language-plaintext highlighter-rouge">FirewalldBackend=nftables</code> to:
+<code class="language-plaintext highlighter-rouge">FirewalldBackend=iptables</code> will fix the issue.  The Bug report and fix can be found
+<a href="https://github.com/docker/for-linux/issues/957">here</a>.  Ideally that will be fixed in the future,
+and it won’t be required.</p>
+
+<h3 id="docker-compose">Docker-Compose</h3>
+
+<p>Docker-compose is essentially a tool that simplifies the building of applications. While many
+applications run on a single server and serve a single function using just a convoluted collection
+bash script, python scripts, rust files, basic libraries etc. the vast majority of applications in
+the world use a lot of assorted components: a web server, a database, a script that pulls data from
+another source, etc. Compose is a simple way to bundle all of these things together to create
+multiple containers that all talk to each other to create a full fledge application, which can be
+started with just a single command.</p>
+
+<p>Docker-compose is written and provided by the team that maintains Docker, and the documentation can
+be found in the same location ( <a href="https://docs.docker.com/compose/gettingstarted/">Docker-compose getting started</a> ) The documentation is very very solid, and provides everything needed to get up and running.</p>
+
+<p>Aside from the aforementioned DNS issue, I really had no issues getting compose up and running.</p>
+
+<h2 id="current-state">Current state</h2>
+
+<ul>
+  <li>Installed <s>CentOS 7</s> Fedora 32</li>
+  <li>Installed Docker</li>
+  <li>Tested the docker install</li>
+  <li>Installed Docker Compose</li>
+  <li>Tested the basics to make sure Docker &amp; Docker Compose were working as intended.</li>
+</ul>
+
+<p>All told this took me about 10-12 hours, mostly fighting with the CentOS install. I spread that out
+over a couple of weekends, and some evenings, mixed in with the other things life demands I do.</p>
+
+<h2 id="next-steps">Next Steps:</h2>
+<ul>
+  <li>Install NextCloud</li>
+  <li>Figure out how to actually effectively host NextCloud</li>
+  <li>Sort out the reverse proxy methods, and if I actually need one or not.  I expect that I will use
+traefik for a reverse proxy just because it looks pretty straightforward to learn, and it’s wildly
+popular.</li>
+</ul>
+
 <h2 id="resources">Resources</h2>
 
 <div class="footnotes" role="doc-endnotes">
@@ -163,7 +215,7 @@ For more examples and ideas, visit:
   </ol>
 </div>
 
-  </div><a class="u-url" href="/self-hosting/2020/10/12/step1.html" hidden></a>
+  </div><a class="u-url" href="/self-hosting/2020/10/18/step1.html" hidden></a>
 </article>
 
 
