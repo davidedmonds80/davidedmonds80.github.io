@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Random Musings  
-email: web@edmonds.site
+email: admin@squirrellydave.net
 description: >- # this means to ignore newlines until "baseurl:"
   This page contains useless nonsense extruded from my brain. Probably some code and other 
   potentially useful things as well.  Peruse at your own risk. 
