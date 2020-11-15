@@ -1,4 +1,320 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-02T10:52:52-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Step 1-Laying the Groundwork</title><link href="http://localhost:4000/self-hosting/2020/10/18/step1.html" rel="alternate" type="text/html" title="Step 1-Laying the Groundwork" /><published>2020-10-18T00:00:00-04:00</published><updated>2020-10-18T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/10/18/step1</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/10/18/step1.html">&lt;h2 id=&quot;from-the-bottom-up&quot;&gt;From the Bottom Up&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-15T11:37:21-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Step 3: Putting it all together</title><link href="http://localhost:4000/self-hosting/2020/11/15/step3.html" rel="alternate" type="text/html" title="Step 3: Putting it all together" /><published>2020-11-15T00:00:00-05:00</published><updated>2020-11-15T00:00:00-05:00</updated><id>http://localhost:4000/self-hosting/2020/11/15/step3</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/11/15/step3.html">&lt;h2 id=&quot;recaps-are-a-thing-right&quot;&gt;Recaps are a thing right?&lt;/h2&gt;
+
+&lt;p&gt;A quick recap of what my current self-hosted lab looks like is probably in order.  There are 4
+servers in play:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Gateway: This is a server that just takes traffic from the public internet (TCP http &amp;amp; https
+traffic only) and shoves it down a VPN pipe to my home Server&lt;/li&gt;
+  &lt;li&gt;The Home Server: This is the workhorse server.  It’s hosting all of the content, applications and
+data.  Traefik is running as the reverse proxy routing inbound traffic to the appropriate
+applications as needed, and also handling certificates through LetsEncrypt&lt;/li&gt;
+  &lt;li&gt;The Pihole server(s): between setting everything up in Step 2 and the time of writing this I added
+a second Pihole server, after an unplanned update-related outage taught me a valuable lesson
+about resiliency and redundancy and the need for at least one of those things.  So now there are
+two PiHole servers, which are each updated on their own with my internal DNS records as needed.
+It’s not a great plan, and automating that is on the to-do list.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Knowing that traffic will come in from the outside world and hit the right application based on
+sub-domain, the time has finally come to put actual useful things in place.&lt;/p&gt;
+
+&lt;h2 id=&quot;nextcloud&quot;&gt;NextCloud&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://nextcloud.com/&quot;&gt;NextCloud&lt;/a&gt; is a fairly impressive cloud storage system.  It is an almost
+complete drop-in for someone that is using Google for everything cloud.  It provides file storage,
+photo storage, cloud sync with iOS and Android devices, a chat/video conference platform, a couple
+options for document creation/editing/collaboration.  It really is a very full featured application.
+Admittedly, not all of the assorted functions have full feature parity with the major players. That
+being said, it’s an open source product that handles the essentials quite well.&lt;/p&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+
+&lt;p&gt;There are myriad ways to run your own NextCloud instance, everything from building from source on a
+dedicated machine to turn-key cloud hosting options where you have little to no maintenance to worry
+about.&lt;/p&gt;
+
+&lt;p&gt;Personally I went the docker route, because of the simplicity of the setup, and the ability to
+migrate the whole thing as needed.  Also, I’m lazy and my docker-compose file is 29 lines long for
+NextCloud.  It really doesn’t get much more simple than that.&lt;/p&gt;
+
+&lt;p&gt;There are tons of docker config examples out there, but I’ll include mine here just to add to the
+noise.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2'&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mariadb&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;--transaction-isolation=READ-COMMITTED --binlog-format=ROW&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;unless-stopped&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/data/nc_db/:/var/lib/mysql&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;MYSQL_ROOT_PASSWORD=&amp;lt;PASSWORD&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;MYSQL_PASSWORD=&amp;lt;PASSWORD&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;MYSQL_DATABASE=&amp;lt;DATABASE_NAME&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;MYSQL_USER=&amp;lt;DATABASE_USERNAME&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nextcloud&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;db&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/path/to/persistent/directory/:/var/www/html&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/path/to/config/file/php.ini:/usr/local/etc/php/php.ini&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;unless-stopped&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.enable=true&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.http.routers.&amp;lt;TRAEFIK_RULE_NAME&amp;gt;.rule=Host(`subdomain.domain.com`)&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.http.routers.&amp;lt;TRAEFIK_RULE_NAME&amp;gt;.tls.certresolver=le&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.http.middlewares.&amp;lt;TRAEFIK_REDIRECT_RULE_NAME&amp;gt;.redirectregex.regex=https://(.*)/.well-known/(card|cal)dav&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.http.middlewares.&amp;lt;TRAEFIK_REDIRECT_RULE_NAME&amp;gt;.redirectregex.replacement=https://$${1}/remote.php/dav/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This highlights why I like Traefik so much, 5 lines in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt; file and everything
+is in place, and as soon as DNS records are in place, automatic SSL certificate management is in
+place and it all pretty much just works.  The last two lines in there are to handle some NextCloud
+specific re-directs which NextCloud needs for the assorted apps to function properly.&lt;/p&gt;
+
+&lt;p&gt;There is also a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;php.ini&lt;/code&gt; file needed to allow some other features, in my case it’s the ability to
+upload large files.&lt;/p&gt;
+
+&lt;p&gt;php.ini:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;upload_max_filesize = 2048M
+post_max_size = 2048M
+max_execution_time = 200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Adding that file and mounting it to the container as seen above solved my issue with uploading
+files.  There are some default limitations in the web server the NextCloud container uses, so this is
+used to override those settings.&lt;/p&gt;
+
+&lt;p&gt;There is some additional configuration needed in the Application itself to fully complete the
+install process.  Things like adding users, setting up  Email settings etc, are all configured
+within NextCloud.  The &lt;a href=&quot;https://docs.nextcloud.com/server/20/admin_manual/index.html&quot;&gt;docs&lt;/a&gt; is very
+through, and I really do recommend going through the entire Admin manual before starting down this
+road.&lt;/p&gt;
+
+&lt;p&gt;One of the great things about NextCloud is the very large community, there are a ton of users out
+there, and lots of available solutions for most potential problems. There is a very active Telegram
+user group &lt;a href=&quot;https://t.me/Nextcloud&quot;&gt;here&lt;/a&gt;.  I highly recommend joining that group if you come across
+any challenges getting your own instance up and running.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-note-about-security&quot;&gt;A Note about Security&lt;/h3&gt;
+
+&lt;p&gt;Securing any application that is available on the public internet is an incredibly important step.
+There are a million and one ideas about what is best, and ultimately how something is secured is up
+to the person managing the application.  I won’t offer an opinion on the best methodology, or what
+exactly should be done.  It’s a constantly moving target, and hosting applications on the public
+internet is a constant process. It’s important to keep up-to-date on potential vulnerabilities, and
+patches.&lt;/p&gt;
+
+&lt;p&gt;At a bare minimum I recommend a two-factor authentication scheme (not via SMS), Authy is a free
+application that can be used to generate 2FA tokens, and there is a TOTP app in the Nextcloud store
+that supports Authy.  There are several other methods for 2FA, again, research and determine the
+best option for your use-case.&lt;/p&gt;
+
+&lt;h2 id=&quot;photoprism&quot;&gt;PhotoPrism&lt;/h2&gt;
+
+&lt;p&gt;One of the biggest gaps in using NextCloud to replace Google, or Microsoft’s OneDrive is the photos
+support.  It’s sluggish, and laggy, basically no matter what.  Sharing is pretty powerful, but the
+user experience leaves a lot to be desired.  There is a tool that integrates with NextCloud that
+does seem to excel at hosting photos, at least it does a good enough job for me.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://photoprism.pro/&quot;&gt;PhotoPrism&lt;/a&gt; is a self-hosted photo gallery. It is still very much an early
+product, and lacks some features that may be a deal-breaker for many.  It does however integrate
+with NextCloud natively and will pull all photos stored in NextCloud and allows for creation of
+semi-public albums.  Users can create a link to an album and allow people with that link to
+view/download photos from that Album, without sharing the entire collection of photos being hosted.
+In my case it works very well to allow me to create albums of “guys trips” I’ve taken, and share
+those photos with the people that were on that trip.&lt;/p&gt;
+
+&lt;p&gt;This is a docker native app, and the team has some very good &lt;a href=&quot;https://docs.photoprism.pro/&quot;&gt;documentation&lt;/a&gt; on setting up your own instance.&lt;/p&gt;
+
+&lt;p&gt;One of the biggest downsides for me is the lack of user account options, there is only a single
+account allowed, so multiple users can’t host their own photos.  This is something the PhotoPrism
+team has said maybe implemented in a later release, and may be a paid feature.  There are plenty of
+other options out there, this is just where I landed.&lt;/p&gt;
+
+&lt;h2 id=&quot;bookstack&quot;&gt;Bookstack&lt;/h2&gt;
+
+&lt;p&gt;Throughout this entire process the one thing that I kept doing, was re-doing things.  I’d screw
+something up, and have to do the entire thing all over again. So I decided one of the things I
+absolutely needed was a documentation site of some sort.  I chose &lt;a href=&quot;https://www.bookstackapp.com/&quot;&gt;Bookstack&lt;/a&gt; because I like the way it looks and organizes data in a hierarchal manner.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Shelves
+    &lt;ul&gt;
+      &lt;li&gt;Books on Shelves
+        &lt;ul&gt;
+          &lt;li&gt;Chapters in Books
+            &lt;ul&gt;
+              &lt;li&gt;Pages in Chapters&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It does allow the user to use some/all/none of this hierarchy. I.e. you can have a page in a book,
+with no chapter associated, or a book not on any shelf.  You can also change your mind later an put
+a page in a book or a chapter, or put a book on a shelf.&lt;/p&gt;
+
+&lt;p&gt;Again, this is very straightforward docker-compose file that stands up the database and the
+application for you.  It’s very well documented, so I won’t include my version as I’m just using one
+of the basic configs.  Their &lt;a href=&quot;https://github.com/linuxserver/docker-bookstack&quot;&gt;Github page&lt;/a&gt; has a
+great example, and mine is almost identical to that one.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-end&quot;&gt;The End?&lt;/h2&gt;
+
+&lt;p&gt;At this point hosting these three applications has met my original goal of having a place to store
+and sync data from my assorted devices.  There are other things I will likely end up hosting, and
+there will no doubt be changes to my infrastructure and my methods.  I’ll update and add other posts
+as I change things.&lt;/p&gt;
+
+&lt;h3 id=&quot;related-posts&quot;&gt;Related Posts&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;/self-hosting/2020/10/18/step1.html&quot;&gt;Step 1: Laying the Ground Work&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/self-hosting/2020/11/01/step2.html&quot;&gt;Step 2: The Foundation&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Recaps are a thing right?</summary></entry><entry><title type="html">Step 2: The Foundation</title><link href="http://localhost:4000/self-hosting/2020/11/01/step2.html" rel="alternate" type="text/html" title="Step 2: The Foundation" /><published>2020-11-01T00:00:00-04:00</published><updated>2020-11-01T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/11/01/step2</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/11/01/step2.html">&lt;h2 id=&quot;adding-a-layer&quot;&gt;Adding a layer&lt;/h2&gt;
+
+&lt;p&gt;When I started this project I had an idea of my end goal, with some very specific targets I wanted
+to hit, but I knew that along the path I would find things that required some adjustment.  For
+instance: I figured I’d want to put pi-hole as a DNS server in place, but that was a fairly low
+priority for the overall project.  Right up until it wasn’t.  I realized while setting up Traefik
+and working through a guide on that process that I’d need DNS in place internally for Traefik to be
+able to work it’s magic effectively.&lt;/p&gt;
+
+&lt;p&gt;So while I was able to get Traefik up and working without DNS, and it’s easy enough, it wasn’t
+working like I intended.  If someone is reading this and following along, I definitely suggest
+starting with a DNS server, which makes life a little easier for other things beyond setting up
+Traefik.  So that’s the order I’ll present the project in, even though it’s not exactly how I did it.&lt;/p&gt;
+
+&lt;p&gt;Another thing I realized fairly quickly is that I’ll want to setup access from outside my LAN sooner
+rather than later.  It’s easier to troubleshoot a system with fewer moving pieces, so being able to
+access a simple tool from both on and off my internal network is a good way to make sure that I’ve
+got things working the way I like.&lt;/p&gt;
+
+&lt;h2 id=&quot;dns-via-pihole&quot;&gt;DNS via PiHole&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pi-hole.net/&quot;&gt;PiHole&lt;/a&gt; is a pretty nifty little project.  A lightweight DNS server that comes with a hefty default
+block list just chock-full of Ad serving sites.  Every time a user loads a website with Ads each ad
+is linked via DNS to a server delivering that Ad content.  PiHole just dumps those DNS requests in
+pit of despair and thus, the end user never sees them.  They’ve got a lot of good documentation on
+their website, and really setting it up is pretty straightforward.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Install PiHole on a device&lt;/li&gt;
+  &lt;li&gt;Point a device at the PiHole IP for it’s DNS requests&lt;/li&gt;
+  &lt;li&gt;Enjoy less ads&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The exact steps needed for each piece of that will vary depending on all kinds of things.&lt;/p&gt;
+
+&lt;p&gt;In my case it was a little more complex.  My router will allow me to define the DNS servers
+manually, which is a good start, but it doesn’t just re-direct DNS queries to the PiHole by default,
+which leads to some weirdness, a little DuckDuckGoing and I found a setting that forces the router
+to just push all queries to the PiHole&lt;sup id=&quot;fnref:router&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:router&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’s also recommended to make the PiHole the DHCP server, which is great, except my router doesn’t
+off a setting to disable the DHCP server, and having two DHCP servers on a network is just a recipe
+for disaster.  So again, there was some tweaking for my setup.  This will be the case for most
+setups, since each network is going to have it’s own quirks.&lt;/p&gt;
+
+&lt;h2 id=&quot;traefik&quot;&gt;Traefik&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://traefik.io/&quot;&gt;Traefik&lt;/a&gt; is a very cool project, it’s a very powerful reverse proxy&lt;sup id=&quot;fnref:proxy&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:proxy&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and it’s got a ton of
+options.  Which means that it can be very complex to configure, there’s a lot going on, and there’s
+not really a ‘point-and-click’ install process for it.  This can turn some people off, and that’s
+totally understandable.&lt;/p&gt;
+
+&lt;p&gt;For me, however, this is more about learning how things work, so why not
+push myself and take the more difficult path.  If I was just trying to get a simple service up and
+running, Traefik would not be the route I would take. I do plan on setting up multiple services, so
+Traefik makes sense, especially since I’m planning on running most of them through Docker.&lt;/p&gt;
+
+&lt;p&gt;Setting up Traefik wasn’t especially difficult, and I only came across a single issue.  I used this
+&lt;a href=&quot;https://theorangeone.net/posts/hello-world-with-traefik/&quot;&gt;tutorial&lt;/a&gt; written by TheOrangeOne, a very
+knowledgeable individual, especially in the self-hosting arena.&lt;/p&gt;
+
+&lt;p&gt;The single issue I came across was tied to Firewalld, specifically Firewalld doing it’s job and
+blocking traffic.  Putting in some rules to allow traffic on the needed ports (80, 443, 8080) fixed
+the issue, and once I had my DNS up and running like it should, everything worked as intended.&lt;/p&gt;
+
+&lt;h2 id=&quot;offnet-access&quot;&gt;OffNet Access&lt;/h2&gt;
+
+&lt;p&gt;I made the choice to setup my offnet access at this point to simplify troubleshooting.  Once I had a
+basic Traefik setup in place and running, I realized it would be easier to setup access into my
+server with only a single service running, which will allow me to test access with only a few moving
+parts.&lt;/p&gt;
+
+&lt;p&gt;The basic goal for this was to have a VPS setup which will function as a gateway server of sorts
+with a static IP I can point external DNS to, and allow that to forward traffic from the public
+internet via VPN to my internal server.&lt;/p&gt;
+
+&lt;h3 id=&quot;vps&quot;&gt;VPS&lt;/h3&gt;
+
+&lt;p&gt;To setup a gateway server requires a server.  Preferably with a static IP that can be easily
+referenced by the public DNS services.  This is pretty easily done with a number of hosting
+providers.  As this server will not really hold any of my personal data I’m not too worried about
+the location of the server geographically, other than keeping it relatively close to my actual
+location.&lt;/p&gt;
+
+&lt;p&gt;I did some research and price comparison, and I chose &lt;a href=&quot;https://www.linode.com/&quot;&gt;Linode&lt;/a&gt; as my
+hosting provider.  I picked their smallest server option “Nanode” which has 1G of Ram, 1 CPU, and
+25G of storage. This should be plenty of power for what I’m trying to do.  I’ll only be running two
+applications, a proxy server, and a VPN server.&lt;/p&gt;
+
+&lt;p&gt;Something important to remember is that this server is by it’s very nature exposed to the internet.
+So securing it is priority 1.  As soon as the server was up I:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Created a non-root user&lt;/li&gt;
+  &lt;li&gt;Enabled SSH key authentication&lt;/li&gt;
+  &lt;li&gt;Disallowed root login over ssh&lt;/li&gt;
+  &lt;li&gt;Disabled password login over ssh&lt;/li&gt;
+  &lt;li&gt;Installed and configured fail2ban&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This, in theory, should keep most of the riff-raff off of it.  I hope.&lt;/p&gt;
+
+&lt;h3 id=&quot;wireguard&quot;&gt;Wireguard&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.wireguard.com/&quot;&gt;Wireguard&lt;/a&gt; is a new-ish player in the VPN space, but they are gaining a lot of traction for being easy to configure, and fairly lightweight.&lt;/p&gt;
+
+&lt;p&gt;Again, I followed a basic setup guide from &lt;a href=&quot;https://theorangeone.net/posts/wireguard-getting-started/&quot;&gt;TheOrangeOne&lt;/a&gt;, this is another pretty straightforward setup:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Install Wireguard on both sides&lt;/li&gt;
+  &lt;li&gt;Write the config files for the server and the client&lt;sup id=&quot;fnref:wg&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wg&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;Bring up the wireguard service on the Server&lt;/li&gt;
+  &lt;li&gt;Bring up the wireguard service on the client&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At some point I will educate myself about the firewall well enough to block SSH traffic from
+anything outside that VPN IP range on the server as another layer of security.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/self-hosting/2020/11/15/step3.html&quot;&gt;Step 3: Putting it all together&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:router&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I use an Amplifi Instant mesh setup from Ubiquiti which actually works very well as long  as you don’t want to tinker with it too much.  The the WebUI setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bypass DNS Cache&lt;/code&gt; has to be enabled, otherwise the router acts as a proxy for DNS requests, submitting the requests and serving them back to the device.  This can be seen in the PiHole logs easily, since the only device that shows up is the router. &lt;a href=&quot;#fnref:router&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:proxy&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;A reverse proxy just takes inbound traffic and directs it to the correct location/port/service. &lt;a href=&quot;#fnref:proxy&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:wg&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Client and server in this case referring to the &lt;em&gt;Wireguard&lt;/em&gt; Client and server, my home server is the client in this case, and the VPS is the server. &lt;a href=&quot;#fnref:wg&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Adding a layer</summary></entry><entry><title type="html">Step 1: Laying the Groundwork</title><link href="http://localhost:4000/self-hosting/2020/10/18/step1.html" rel="alternate" type="text/html" title="Step 1: Laying the Groundwork" /><published>2020-10-18T00:00:00-04:00</published><updated>2020-10-18T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/10/18/step1</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/10/18/step1.html">&lt;h2 id=&quot;from-the-bottom-up&quot;&gt;From the Bottom Up&lt;/h2&gt;
 
 &lt;p&gt;Knowing where I want to go, means I know exactly where I need to start.  I’ve got the hardware, but
 it’s currently running EndeavourOS, and that’s not going to work for me.  I want to run it on
@@ -33,7 +349,7 @@ process and ended up installing the entire OS on my external drive, which was a 
 perhaps because I’d fixed some of the bugs in my process, but whatever the reason may be, I
 currently have Fedora 32 installed on my laptop, which is hardwired&lt;sup id=&quot;fnref:wifi&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wifi&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; to a dumb switch hanging off my
 router.  Nifty.  DHCP reservation with a name gives me pseudo-DNS access to my laptop, including the
-Fedora Server GUI which I really didn’t know was a “thing”.  The GUI is pretty nice, but mostly
+Fedora Server GUI, called “Cockpit” which I really didn’t know was a “thing”.  Cockpit is pretty nice, but mostly
 useless for what I need, it works well and all, but I prefer the command line for most things, but I
 do like the pretty pictures and graphs it gives me.&lt;/p&gt;
 
@@ -52,7 +368,7 @@ way.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/ent_data_vg.png&quot; alt=&quot;data_vg&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;sup&gt;&lt;em&gt;Note the pretty pictures from the Fedora Server GUI.  Ain’t they pretty?&lt;/em&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;&lt;em&gt;Note the pretty pictures from Cockpit.  Ain’t they pretty?&lt;/em&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;I’ve got two VGs, one for the data, and another for the OS type files. In this case they are on
 separate physical drives.  This should in theory allow me to expand if I need more storage by simply adding an additional drive(s), this should also allow the system to boot in the event something happens to the external drive, or it doesn’t mount right.  The internal drive will host most of the crucial functions this server will be handling, while the external will be used for data storage, i.e. my NextCloud storage.&lt;/p&gt;
@@ -146,6 +462,10 @@ over a couple of weekends, and some evenings, mixed in with the other things lif
 traefik for a reverse proxy just because it looks pretty straightforward to learn, and it’s wildly
 popular.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;step-2&quot;&gt;Step 2&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;/self-hosting/2020/11/01/step2.html&quot;&gt;Step 2: Laying the Groundwork&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
 
@@ -547,7 +867,9 @@ time is to put it on the main server.&lt;/li&gt;
 
 &lt;p&gt;All of this is of course subject to whims of fate and time. So who knows what this path will look
 like in the end.  I’d like to think that I’m going to continue to update this as I go through the
-process, so we’ll see how that goes.&lt;/p&gt;</content><author><name></name></author><summary type="html">The Goal</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/beginners/2020/10/04/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-04T00:00:00-04:00</published><updated>2020-10-04T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/04/why-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/04/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
+process, so we’ll see how that goes.&lt;/p&gt;
+
+&lt;p&gt;Continue this series &lt;a href=&quot;/self-hosting/2020/10/18/step1.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">The Goal</summary></entry><entry><title type="html">Why Use Linux?</title><link href="http://localhost:4000/beginners/2020/10/04/why-linux.html" rel="alternate" type="text/html" title="Why Use Linux?" /><published>2020-10-04T00:00:00-04:00</published><updated>2020-10-04T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/04/why-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/04/why-linux.html">&lt;h2 id=&quot;why-linux&quot;&gt;Why Linux?&lt;/h2&gt;
 
 &lt;p&gt;The first question in the process of switching from Windows or MacOS is pretty much always “Why   &lt;br /&gt;
 should I use Linux?” Which is a valid question, and an important one.  The answer to that question&lt;br /&gt;
@@ -585,8 +907,14 @@ non-profit organizations, there’s very little reason to collect user data.  Th
 &lt;p&gt;While there are many reasons individuals chose to use Linux those are the three biggest reasons I
 see.&lt;/p&gt;
 
-&lt;p&gt;I’ll address &lt;em&gt;which&lt;/em&gt; Linux Distribution to use in another post. (Spoiler: It’s &lt;strong&gt;not&lt;/strong&gt; Kali, it’s
-&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/beginners/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
+&lt;p&gt;I’ll address &lt;em&gt;which&lt;/em&gt; Linux Distribution to use in &lt;a href=&quot;/beginners/2020/10/11/which-linux.html&quot;&gt;another post&lt;/a&gt;. (Spoiler: It’s &lt;strong&gt;not&lt;/strong&gt; Kali, it’s
+&lt;strong&gt;NEVER&lt;/strong&gt; going to be Kali)&lt;/p&gt;
+
+&lt;h2 id=&quot;related-posts&quot;&gt;Related Posts&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/beginners/2020/10/03/what-is-linux.html&quot;&gt;What is Linux&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/beginners/2020/10/11/which-linux.html&quot;&gt;Which Linux should you use?&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Why Linux? The first question in the process of switching from Windows or MacOS is pretty much always “Why should I use Linux?” Which is a valid question, and an important one. The answer to that question can shape a person’s path through the world of Linux. While people go to Linux communities and ask that question on daily basis, it’s ultimately a question each person has to answer for themselves.</summary></entry><entry><title type="html">What is Linux anyway?</title><link href="http://localhost:4000/beginners/2020/10/03/what-is-linux.html" rel="alternate" type="text/html" title="What is Linux anyway?" /><published>2020-10-03T00:00:00-04:00</published><updated>2020-10-03T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/03/what-is-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/03/what-is-linux.html">&lt;h2 id=&quot;what-is-linux&quot;&gt;What is “Linux”?&lt;/h2&gt;
 
 &lt;p&gt;Linux is just an Operating system.  In the grand scheme of things it’s not much
 different from Windows, MacOS, iOS, iPadOS, Android, BSD or any other operating system.&lt;/p&gt;
@@ -627,4 +955,6 @@ switch to Linux, one of the first decisions to make is which distribution to use
 slightly different things, from different color schemes, to different updating methods.&lt;/p&gt;
 
 &lt;p&gt;Take a look at &lt;a href=&quot;https://distrowatch.com/&quot;&gt;Distrowatch&lt;/a&gt; to see a small sample of the available
-options out there.  (I’ll cover choosing a distribution in another post)&lt;/p&gt;</content><author><name></name></author><summary type="html">What is “Linux”?</summary></entry></feed>
+options out there.  (I’ll cover choosing a distribution in &lt;a href=&quot;/beginners/2020/10/11/which-linux.html&quot;&gt;another post&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Continue this series with &lt;a href=&quot;/beginners/2020/10/04/why-linux.html&quot;&gt;Why Use Linux&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">What is “Linux”?</summary></entry></feed>

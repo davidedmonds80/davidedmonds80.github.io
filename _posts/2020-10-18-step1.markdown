@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Step 1-Laying the Groundwork"
+title: "Step 1: Laying the Groundwork"
 categories: Self-Hosting
 ---
 
@@ -35,7 +35,7 @@ I ended up using Fedora Server[^F32] instead of CentOS. The install process seem
 perhaps because I'd fixed some of the bugs in my process, but whatever the reason may be, I
 currently have Fedora 32 installed on my laptop, which is hardwired[^wifi] to a dumb switch hanging off my
 router.  Nifty.  DHCP reservation with a name gives me pseudo-DNS access to my laptop, including the
-Fedora Server GUI which I really didn't know was a "thing".  The GUI is pretty nice, but mostly
+Fedora Server GUI, called "Cockpit" which I really didn't know was a "thing".  Cockpit is pretty nice, but mostly
 useless for what I need, it works well and all, but I prefer the command line for most things, but I
 do like the pretty pictures and graphs it gives me.  
 
@@ -55,7 +55,7 @@ The Data Volume Group:
 
 ![data_vg](/assets/ent_data_vg.png)
 
-<sup>*Note the pretty pictures from the Fedora Server GUI.  Ain't they pretty?*</sup>
+<sup>*Note the pretty pictures from Cockpit.  Ain't they pretty?*</sup>
 
 I've got two VGs, one for the data, and another for the OS type files. In this case they are on
 separate physical drives.  This should in theory allow me to expand if I need more storage by simply adding an additional drive(s), this should also allow the system to boot in the event something happens to the external drive, or it doesn't mount right.  The internal drive will host most of the crucial functions this server will be handling, while the external will be used for data storage, i.e. my NextCloud storage. 
@@ -148,6 +148,9 @@ over a couple of weekends, and some evenings, mixed in with the other things lif
   traefik for a reverse proxy just because it looks pretty straightforward to learn, and it's wildly
   popular.  
 
+### Step 2
+
+[Step 2: Laying the Groundwork]({% post_url 2020-11-1-step2 %})
 
 ## Resources
 

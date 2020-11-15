@@ -46,7 +46,8 @@ There are literally thousands of distributions floating around the internet, all
 slightly different things, from different color schemes, to different updating methods.  
 
 Take a look at [Distrowatch](https://distrowatch.com/) to see a small sample of the available
-options out there.  (I'll cover choosing a distribution in another post)
+options out there.  (I'll cover choosing a distribution in [another post]({% post_url
+2020-10-11-which-linux %}))
 
-
+Continue this series with [Why Use Linux]({% post_url 2020-10-04-why-linux %}) 
 

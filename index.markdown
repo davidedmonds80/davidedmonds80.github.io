@@ -24,3 +24,10 @@ know.
 The goal here is to provide information for (mostly) new Linux users, at least to point them in the
 right direction, to answer the very common questions it seems all new users have, maybe to provide
 some basic documentation on how a thing works for me, or how I got something to work. 
+
+## Getting Started: 
+
+Looking for Linux Info?  See the [What is Linux]({% post_url 2020-10-03-what-is-linux %}) post.
+
+Looking for info on Self-Hosting?  See the Beginning of my [Self-Hosting Journey]({% post_url
+2020-10-10-hosting-beginning %}).

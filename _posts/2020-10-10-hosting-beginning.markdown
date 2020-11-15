@@ -78,4 +78,4 @@ All of this is of course subject to whims of fate and time. So who knows what th
 like in the end.  I'd like to think that I'm going to continue to update this as I go through the
 process, so we'll see how that goes.  
 
-    
+Continue this series [here]({% post_url 2020-10-18-step1 %})    

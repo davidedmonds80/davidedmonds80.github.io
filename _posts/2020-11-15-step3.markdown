@@ -1,0 +1,177 @@
+---
+layout: post
+title: "Step 3: Putting it all together"
+categories: Self-Hosting
+---
+
+## Recaps are a thing right? 
+
+A quick recap of what my current self-hosted lab looks like is probably in order.  There are 4
+servers in play: 
+
+1. The Gateway: This is a server that just takes traffic from the public internet (TCP http & https
+   traffic only) and shoves it down a VPN pipe to my home Server
+2. The Home Server: This is the workhorse server.  It's hosting all of the content, applications and
+   data.  Traefik is running as the reverse proxy routing inbound traffic to the appropriate
+   applications as needed, and also handling certificates through LetsEncrypt
+3. The Pihole server(s): between setting everything up in Step 2 and the time of writing this I added
+   a second Pihole server, after an unplanned update-related outage taught me a valuable lesson
+   about resiliency and redundancy and the need for at least one of those things.  So now there are
+   two PiHole servers, which are each updated on their own with my internal DNS records as needed.
+   It's not a great plan, and automating that is on the to-do list. 
+
+Knowing that traffic will come in from the outside world and hit the right application based on
+sub-domain, the time has finally come to put actual useful things in place.  
+
+## NextCloud
+
+[NextCloud](https://nextcloud.com/) is a fairly impressive cloud storage system.  It is an almost
+complete drop-in for someone that is using Google for everything cloud.  It provides file storage,
+photo storage, cloud sync with iOS and Android devices, a chat/video conference platform, a couple
+options for document creation/editing/collaboration.  It really is a very full featured application.
+Admittedly, not all of the assorted functions have full feature parity with the major players. That
+being said, it's an open source product that handles the essentials quite well.  
+
+### Installation
+
+There are myriad ways to run your own NextCloud instance, everything from building from source on a
+dedicated machine to turn-key cloud hosting options where you have little to no maintenance to worry
+about.  
+
+Personally I went the docker route, because of the simplicity of the setup, and the ability to
+migrate the whole thing as needed.  Also, I'm lazy and my docker-compose file is 29 lines long for
+NextCloud.  It really doesn't get much more simple than that. 
+
+There are tons of docker config examples out there, but I'll include mine here just to add to the
+noise. 
+
+```yaml
+---
+version: '2'
+services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: unless-stopped
+    volumes:
+      - /data/nc_db/:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=<PASSWORD>
+      - MYSQL_PASSWORD=<PASSWORD>
+      - MYSQL_DATABASE=<DATABASE_NAME>
+      - MYSQL_USER=<DATABASE_USERNAME>
+  app:
+    image: nextcloud
+    links:
+      - db
+    volumes:
+      - /path/to/persistent/directory/:/var/www/html
+      - /path/to/config/file/php.ini:/usr/local/etc/php/php.ini
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.<TRAEFIK_RULE_NAME>.rule=Host(`subdomain.domain.com`)
+      - traefik.http.routers.<TRAEFIK_RULE_NAME>.tls.certresolver=le
+      - traefik.http.middlewares.<TRAEFIK_REDIRECT_RULE_NAME>.redirectregex.regex=https://(.*)/.well-known/(card|cal)dav
+      - traefik.http.middlewares.<TRAEFIK_REDIRECT_RULE_NAME>.redirectregex.replacement=https://$${1}/remote.php/dav/
+```
+
+This highlights why I like Traefik so much, 5 lines in the `docker-compose.yaml` file and everything
+is in place, and as soon as DNS records are in place, automatic SSL certificate management is in
+place and it all pretty much just works.  The last two lines in there are to handle some NextCloud
+specific re-directs which NextCloud needs for the assorted apps to function properly.  
+
+There is also a `php.ini` file needed to allow some other features, in my case it's the ability to
+upload large files.  
+
+php.ini: 
+```
+upload_max_filesize = 2048M
+post_max_size = 2048M
+max_execution_time = 200
+```
+
+Adding that file and mounting it to the container as seen above solved my issue with uploading
+files.  There are some default limitations in the web server the NextCloud container uses, so this is
+used to override those settings. 
+
+There is some additional configuration needed in the Application itself to fully complete the
+install process.  Things like adding users, setting up  Email settings etc, are all configured
+within NextCloud.  The [docs](https://docs.nextcloud.com/server/20/admin_manual/index.html) is very
+through, and I really do recommend going through the entire Admin manual before starting down this
+road. 
+
+One of the great things about NextCloud is the very large community, there are a ton of users out
+there, and lots of available solutions for most potential problems. There is a very active Telegram
+user group [here](https://t.me/Nextcloud).  I highly recommend joining that group if you come across
+any challenges getting your own instance up and running.  
+
+### A Note about Security
+
+Securing any application that is available on the public internet is an incredibly important step.
+There are a million and one ideas about what is best, and ultimately how something is secured is up
+to the person managing the application.  I won't offer an opinion on the best methodology, or what
+exactly should be done.  It's a constantly moving target, and hosting applications on the public
+internet is a constant process. It's important to keep up-to-date on potential vulnerabilities, and
+patches.  
+
+At a bare minimum I recommend a two-factor authentication scheme (not via SMS), Authy is a free
+application that can be used to generate 2FA tokens, and there is a TOTP app in the Nextcloud store
+that supports Authy.  There are several other methods for 2FA, again, research and determine the
+best option for your use-case.  
+
+## PhotoPrism
+
+One of the biggest gaps in using NextCloud to replace Google, or Microsoft's OneDrive is the photos
+support.  It's sluggish, and laggy, basically no matter what.  Sharing is pretty powerful, but the
+user experience leaves a lot to be desired.  There is a tool that integrates with NextCloud that
+does seem to excel at hosting photos, at least it does a good enough job for me.  
+
+[PhotoPrism](https://photoprism.pro/) is a self-hosted photo gallery. It is still very much an early
+product, and lacks some features that may be a deal-breaker for many.  It does however integrate
+with NextCloud natively and will pull all photos stored in NextCloud and allows for creation of
+semi-public albums.  Users can create a link to an album and allow people with that link to
+view/download photos from that Album, without sharing the entire collection of photos being hosted.
+In my case it works very well to allow me to create albums of "guys trips" I've taken, and share
+those photos with the people that were on that trip.  
+
+This is a docker native app, and the team has some very good [documentation](https://docs.photoprism.pro/) on setting up your own instance.  
+
+One of the biggest downsides for me is the lack of user account options, there is only a single
+account allowed, so multiple users can't host their own photos.  This is something the PhotoPrism
+team has said maybe implemented in a later release, and may be a paid feature.  There are plenty of
+other options out there, this is just where I landed.  
+
+## Bookstack
+
+Throughout this entire process the one thing that I kept doing, was re-doing things.  I'd screw
+something up, and have to do the entire thing all over again. So I decided one of the things I
+absolutely needed was a documentation site of some sort.  I chose [Bookstack](https://www.bookstackapp.com/) because I like the way it looks and organizes data in a hierarchal manner.  
+
+- Shelves
+    - Books on Shelves
+        - Chapters in Books
+            - Pages in Chapters
+
+It does allow the user to use some/all/none of this hierarchy. I.e. you can have a page in a book,
+with no chapter associated, or a book not on any shelf.  You can also change your mind later an put
+a page in a book or a chapter, or put a book on a shelf.  
+
+Again, this is very straightforward docker-compose file that stands up the database and the
+application for you.  It's very well documented, so I won't include my version as I'm just using one
+of the basic configs.  Their [Github page](https://github.com/linuxserver/docker-bookstack) has a
+great example, and mine is almost identical to that one.  
+
+## The End? 
+
+At this point hosting these three applications has met my original goal of having a place to store
+and sync data from my assorted devices.  There are other things I will likely end up hosting, and
+there will no doubt be changes to my infrastructure and my methods.  I'll update and add other posts
+as I change things.  
+
+### Related Posts
+
+[Step 1: Laying the Ground Work]({% post_url 2020-10-18-step1 %})
+
+[Step 2: The Foundation]({% post_url 2020-11-1-step2 %})
+

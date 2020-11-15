@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Step 2: The Foundation"
-date:   2020-11-01
 categories: Self-Hosting 
 ---
 
@@ -118,7 +117,9 @@ At some point I will educate myself about the firewall well enough to block SSH 
 anything outside that VPN IP range on the server as another layer of security.  
 
 
+## Next Steps
 
+[Step 3: Putting it all together]({% post_url 2020-11-15-step3 %})
 
 ## Resources
 

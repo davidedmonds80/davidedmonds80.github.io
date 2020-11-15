@@ -45,7 +45,12 @@ While there are many reasons individuals chose to use Linux those are the three 
 see.  
 
 
-I'll address *which* Linux Distribution to use in another post. (Spoiler: It's **not** Kali, it's
+I'll address *which* Linux Distribution to use in [another post]({% post_url 2020-10-11-which-linux
+%}). (Spoiler: It's **not** Kali, it's
 **NEVER** going to be Kali)
 
+## Related Posts
 
+[What is Linux]({% post_url 2020-10-03-what-is-linux %})
+
+[Which Linux should you use?]({% post_url 2020-10-11-which-linux %})
