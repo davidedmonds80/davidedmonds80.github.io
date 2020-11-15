@@ -1,4 +1,173 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-18T09:51:52-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Choosing a Linux Distro</title><link href="http://localhost:4000/beginners/2020/10/11/which-linux.html" rel="alternate" type="text/html" title="Choosing a Linux Distro" /><published>2020-10-11T00:00:00-04:00</published><updated>2020-10-11T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/11/which-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/11/which-linux.html">&lt;h2 id=&quot;so-many-choices-so-few-computers&quot;&gt;So Many choices, so few computers&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-02T10:52:52-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Step 1-Laying the Groundwork</title><link href="http://localhost:4000/self-hosting/2020/10/18/step1.html" rel="alternate" type="text/html" title="Step 1-Laying the Groundwork" /><published>2020-10-18T00:00:00-04:00</published><updated>2020-10-18T00:00:00-04:00</updated><id>http://localhost:4000/self-hosting/2020/10/18/step1</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/10/18/step1.html">&lt;h2 id=&quot;from-the-bottom-up&quot;&gt;From the Bottom Up&lt;/h2&gt;
+
+&lt;p&gt;Knowing where I want to go, means I know exactly where I need to start.  I’ve got the hardware, but
+it’s currently running EndeavourOS, and that’s not going to work for me.  I want to run it on
+CentOS, and knowing I’ll be accessing it remotely, means I should be able to do a minimal install of
+CentOS on the hardware and attach my external storage as part of the file system.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-process&quot;&gt;The Process&lt;/h2&gt;
+
+&lt;p&gt;My Goal here was to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install CentOS 7&lt;/li&gt;
+  &lt;li&gt;Install Docker&lt;/li&gt;
+  &lt;li&gt;Test the docker install&lt;/li&gt;
+  &lt;li&gt;Install Docker Compose&lt;/li&gt;
+  &lt;li&gt;Test the basics to make sure Docker &amp;amp; Docker Compose were working as intended.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;No plan survives contact with the &lt;s&gt;Enemy&lt;/s&gt; Computer&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-operating-system&quot;&gt;The Operating System&lt;/h3&gt;
+
+&lt;p&gt;I had a whole stack of issues getting CentOS to work, everything from struggles with bad USB drives
+(maybe?) to the machine sleeping whenever it felt like it.  I suspect most of those struggles were
+my own doing, nonetheless…off with it’s head!!  As it were.&lt;/p&gt;
+
+&lt;p&gt;I did actually get CentOS kinda working, and I got docker installed, but I screwed up the install
+process and ended up installing the entire OS on my external drive, which was a not-good thing.&lt;/p&gt;
+
+&lt;p&gt;I ended up using Fedora Server&lt;sup id=&quot;fnref:F32&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:F32&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; instead of CentOS. The install process seemed to go more smoothly,
+perhaps because I’d fixed some of the bugs in my process, but whatever the reason may be, I
+currently have Fedora 32 installed on my laptop, which is hardwired&lt;sup id=&quot;fnref:wifi&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wifi&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; to a dumb switch hanging off my
+router.  Nifty.  DHCP reservation with a name gives me pseudo-DNS access to my laptop, including the
+Fedora Server GUI which I really didn’t know was a “thing”.  The GUI is pretty nice, but mostly
+useless for what I need, it works well and all, but I prefer the command line for most things, but I
+do like the pretty pictures and graphs it gives me.&lt;/p&gt;
+
+&lt;p&gt;When I re-installed Fedora for the (I think 7&lt;sup&gt;th&lt;/sup&gt;) last time I managed to setup the drives the correct
+way.&lt;/p&gt;
+
+&lt;p&gt;Volume Groups:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ent_vgs.png&quot; alt=&quot;enterprise_vols&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Main OS Volume Group:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ent_fedora_vg.png&quot; alt=&quot;fedora_vg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Data Volume Group:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ent_data_vg.png&quot; alt=&quot;data_vg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;&lt;em&gt;Note the pretty pictures from the Fedora Server GUI.  Ain’t they pretty?&lt;/em&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;I’ve got two VGs, one for the data, and another for the OS type files. In this case they are on
+separate physical drives.  This should in theory allow me to expand if I need more storage by simply adding an additional drive(s), this should also allow the system to boot in the event something happens to the external drive, or it doesn’t mount right.  The internal drive will host most of the crucial functions this server will be handling, while the external will be used for data storage, i.e. my NextCloud storage.&lt;/p&gt;
+
+&lt;p&gt;I also setup key-based authentication on my server to allow me to authenticate from my laptop to the
+server without having to type in a password.  While you can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh-copy-id&lt;/code&gt; method, I
+actually used the Fedora Server GUI for that, which worked like a champ, but I couldn’t find a way
+to prevent password based SSH attempts in the GUI.  Removing that was easy enough (see the command
+reference I used in the references section. &lt;sup id=&quot;fnref:sshd&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:sshd&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;docker&quot;&gt;Docker!&lt;/h3&gt;
+
+&lt;p&gt;Thankfully Docker provides a very solid install guide for installing the docker-engine&lt;sup id=&quot;fnref:dock-guide&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:dock-guide&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;
+unfortunately the base install process doesn’t quite work for Fedora 32.  With some very very clever
+Google-fu, googling the error, led me to an open Bug report&lt;sup id=&quot;fnref:bug&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:bug&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;, with an additional step needed to complete the install, once that was done:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &lt;span class=&quot;s2&quot;&gt;&quot;hello-world&quot;&lt;/span&gt; image from the Docker Hub.
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;amd64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;BOOM!  Docker installed.&lt;/p&gt;
+
+&lt;h4 id=&quot;dns-is-a-pita&quot;&gt;DNS Is a PITA&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/alwaysdns.jpg&quot; alt=&quot;always_dns&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I had some issues around DNS when installing Docker, which took a long, convoluted path to fix, and
+I honestly don’t remember everything I did to get it working, I restarted Docker, and built (and
+later removed) a docker daemon.conf file, but it did work, right up until I tried to get Docker
+compose working.  I want to put the fix here because I think it should fix DNS issues within Docker
+as well as Docker compose.&lt;/p&gt;
+
+&lt;p&gt;The short version is that in Fedora/RedHat/CentOS recent versions the OS uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nftables&lt;/code&gt; by default, instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iptables&lt;/code&gt;; this allows for better support of IPv4 and IPv6 addresses and such. The issue is that docker doesn’t like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nftbles&lt;/code&gt;, so that’s fun.  It’s easily fixable by modifying a single line in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;firewalld.conf&lt;/code&gt; file. Simply changing the line: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FirewalldBackend=nftables&lt;/code&gt; to:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FirewalldBackend=iptables&lt;/code&gt; will fix the issue.  The Bug report and fix can be found
+&lt;a href=&quot;https://github.com/docker/for-linux/issues/957&quot;&gt;here&lt;/a&gt;.  Ideally that will be fixed in the future,
+and it won’t be required.&lt;/p&gt;
+
+&lt;h3 id=&quot;docker-compose&quot;&gt;Docker-Compose&lt;/h3&gt;
+
+&lt;p&gt;Docker-compose is essentially a tool that simplifies the building of applications. While many
+applications run on a single server and serve a single function using just a convoluted collection
+bash script, python scripts, rust files, basic libraries etc. the vast majority of applications in
+the world use a lot of assorted components: a web server, a database, a script that pulls data from
+another source, etc. Compose is a simple way to bundle all of these things together to create
+multiple containers that all talk to each other to create a full fledge application, which can be
+started with just a single command.&lt;/p&gt;
+
+&lt;p&gt;Docker-compose is written and provided by the team that maintains Docker, and the documentation can
+be found in the same location ( &lt;a href=&quot;https://docs.docker.com/compose/gettingstarted/&quot;&gt;Docker-compose getting started&lt;/a&gt; ) The documentation is very very solid, and provides everything needed to get up and running.&lt;/p&gt;
+
+&lt;p&gt;Aside from the aforementioned DNS issue, I really had no issues getting compose up and running.&lt;/p&gt;
+
+&lt;h2 id=&quot;current-state&quot;&gt;Current state&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Installed &lt;s&gt;CentOS 7&lt;/s&gt; Fedora 32&lt;/li&gt;
+  &lt;li&gt;Installed Docker&lt;/li&gt;
+  &lt;li&gt;Tested the docker install&lt;/li&gt;
+  &lt;li&gt;Installed Docker Compose&lt;/li&gt;
+  &lt;li&gt;Tested the basics to make sure Docker &amp;amp; Docker Compose were working as intended.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All told this took me about 10-12 hours, mostly fighting with the CentOS install. I spread that out
+over a couple of weekends, and some evenings, mixed in with the other things life demands I do.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install NextCloud&lt;/li&gt;
+  &lt;li&gt;Figure out how to actually effectively host NextCloud&lt;/li&gt;
+  &lt;li&gt;Sort out the reverse proxy methods, and if I actually need one or not.  I expect that I will use
+traefik for a reverse proxy just because it looks pretty straightforward to learn, and it’s wildly
+popular.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:F32&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://getfedora.org/en/server/download/&quot;&gt;Fedora 32&lt;/a&gt; &lt;a href=&quot;#fnref:F32&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:wifi&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;We’re not going to talk about wifi. OK? &lt;a href=&quot;#fnref:wifi&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:sshd&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;The tutorial I used can be found &lt;a href=&quot;https://ostechnix.com/configure-ssh-key-based-authentication-linux/&quot;&gt;here&lt;/a&gt; but the short version is: Put the key file on the remote server, turn off password based authentication in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt; file, and restart ssh. &lt;a href=&quot;#fnref:sshd&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:dock-guide&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;The Install guide can be found &lt;a href=&quot;https://docs.docker.com/engine/install/fedora/&quot;&gt;here&lt;/a&gt; &lt;a href=&quot;#fnref:dock-guide&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:bug&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;The issue stems from the fact that cgroups v2 isn’t supported by containerd 1.3 or lower.  The fix recommended by the docker team can be found &lt;a href=&quot;https://github.com/docker/for-linux/issues/955#issuecomment-694825085&quot;&gt;here&lt;/a&gt; &lt;a href=&quot;#fnref:bug&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">From the Bottom Up</summary></entry><entry><title type="html">Choosing a Linux Distro</title><link href="http://localhost:4000/beginners/2020/10/11/which-linux.html" rel="alternate" type="text/html" title="Choosing a Linux Distro" /><published>2020-10-11T00:00:00-04:00</published><updated>2020-10-11T00:00:00-04:00</updated><id>http://localhost:4000/beginners/2020/10/11/which-linux</id><content type="html" xml:base="http://localhost:4000/beginners/2020/10/11/which-linux.html">&lt;h2 id=&quot;so-many-choices-so-few-computers&quot;&gt;So Many choices, so few computers&lt;/h2&gt;
 
 &lt;p&gt;As I mentioned there are literally thousands of Linux distributions floating around the internet, so
 how is someone new to the world of Linux supposed to know which one is right for them? It can seem
