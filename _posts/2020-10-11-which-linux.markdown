@@ -48,7 +48,7 @@ This is the thing that makes a computer look a certain way, it's how the desktop
 applied, what the icons and colors are, and most include file managers, text editors, those nifty
 bars that show you what applications are open and what time it is, and all the other stuff that
 makes up the majority of user interactions with a computer.  At some point I'll expound ad nauseam
-about Desktop Environments. Not here though, I will provide a quick list and description of each of
+about [Desktop Environments]({% post_url 2020-12-06-desktop-environments %}). Not here though, I will provide a quick list and description of each of
 them though:
 
 - [Gnome](https://www.gnome.org/) Definitely different than Windows or OSX, lots of stuff included,
@@ -290,3 +290,11 @@ LFS is not a pile of metal to build a bicycle, LFS is a list of locations of ore
 how to mine the ore, create the parts, and assemble the bicycle.  LFS is really more of a training
 tool than an actual distro meant to be used.  LFS is a fantastic way to learn about how Linux works
 at a very low level. 
+
+## Further Reading
+
+[What is Linux]({% post_url 2020-10-03-what-is-linux %})                                                                                                                                                         
+                                                                                                                                                                                                                 
+[Why should you use Linux]({% post_url 2020-10-04-why-linux %})                                                                                                                                                  
+                                                                                                                                                                                                                 
+[Chosing a Desktop Environment]({% post_url 2020-12-06-desktop-environments %})
