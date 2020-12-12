@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-06T11:32:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Choosing a Desktop Environment</title><link href="http://localhost:4000/beginners/customization/configuration/2020/12/06/desktop-environments.html" rel="alternate" type="text/html" title="Choosing a Desktop Environment" /><published>2020-12-06T00:00:00-05:00</published><updated>2020-12-06T00:00:00-05:00</updated><id>http://localhost:4000/beginners/customization/configuration/2020/12/06/desktop-environments</id><content type="html" xml:base="http://localhost:4000/beginners/customization/configuration/2020/12/06/desktop-environments.html">&lt;h2 id=&quot;what-is-a-desktop-environment&quot;&gt;What is a Desktop Environment&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-11T20:49:58-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Random Musings</title><subtitle>This page contains useless nonsense extruded from my brain. Probably some code and other  potentially useful things as well.  Peruse at your own risk. </subtitle><entry><title type="html">Choosing a Desktop Environment</title><link href="http://localhost:4000/beginners/customization/configuration/2020/12/06/desktop-environments.html" rel="alternate" type="text/html" title="Choosing a Desktop Environment" /><published>2020-12-06T00:00:00-05:00</published><updated>2020-12-06T00:00:00-05:00</updated><id>http://localhost:4000/beginners/customization/configuration/2020/12/06/desktop-environments</id><content type="html" xml:base="http://localhost:4000/beginners/customization/configuration/2020/12/06/desktop-environments.html">&lt;h2 id=&quot;what-is-a-desktop-environment&quot;&gt;What is a Desktop Environment&lt;/h2&gt;
 
 &lt;p&gt;If you’re coming from the Windows or Mac/OSX world you’re familiar with desktop environment.  You
 probably haven’t ever thought about it beyond setting a background image or wallpaper, or rearranging
@@ -69,8 +69,27 @@ offers what many would consider a fantastic user experience.&lt;/p&gt;
 integrates well with cloud services like Google providing a seamless experience for end users.&lt;/p&gt;
 
 &lt;p&gt;This is a 5 minute walkthrough of the latest version of Gnome (at the time of this writing Gnome 3)&lt;/p&gt;
-&lt;style&gt;.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }&lt;/style&gt;
-&lt;div class=&quot;embed-container&quot;&gt;    &lt;iframe title=&quot;YouTube video player&quot; width=&quot;640&quot; height=&quot;390&quot; src=&quot;//www.youtube.com/embed/BB7pBRi9Bbk&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;style&gt;
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0
+}
+
+.embed-youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;embed-youtube&quot;&gt;
+    &lt;iframe src=&quot;https://www.youtube.com/embed/BB7pBRi9Bbk&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;p&gt;For more information check out the project’s webpage:  &lt;a href=&quot;https://www.gnome.org/&quot;&gt;Gnome.org&lt;/a&gt;&lt;/p&gt;
 
@@ -87,8 +106,28 @@ between an Android phone and the computer.&lt;/p&gt;
 
 &lt;p&gt;A quick tour of the latest version from KDE:&lt;/p&gt;
 
-&lt;style&gt;.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }&lt;/style&gt;
-&lt;div class=&quot;embed-container&quot;&gt;    &lt;iframe title=&quot;YouTube video player&quot; width=&quot;640&quot; height=&quot;390&quot; src=&quot;//www.youtube.com/embed/h_YdaFNsPBE&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;style&gt;
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0
+}
+
+.embed-youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;embed-youtube&quot;&gt;
+    &lt;iframe src=&quot;https://www.youtube.com/embed/h_YdaFNsPBE&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
 &lt;p&gt;As always check out the &lt;a href=&quot;https://kde.org/&quot;&gt;project website&lt;/a&gt; for more information&lt;/p&gt;
 
 &lt;h3 id=&quot;cinnamon&quot;&gt;Cinnamon&lt;/h3&gt;
@@ -103,8 +142,27 @@ many people.&lt;/p&gt;
 
 &lt;p&gt;Have another 5 minute video tour:&lt;/p&gt;
 
-&lt;style&gt;.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }&lt;/style&gt;
-&lt;div class=&quot;embed-container&quot;&gt;    &lt;iframe title=&quot;YouTube video player&quot; width=&quot;640&quot; height=&quot;390&quot; src=&quot;//www.youtube.com/embed/TBSwFc6hkLY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;style&gt;
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0
+}
+
+.embed-youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;embed-youtube&quot;&gt;
+    &lt;iframe src=&quot;https://www.youtube.com/embed/TBSwFc6hkLY&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;p&gt;For more information about Linux Mint and Cinnamon click &lt;a href=&quot;https://linuxmint.com/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
@@ -116,8 +174,27 @@ it is incredibly customizable, and with some tweaking it can look very good.&lt;
 
 &lt;p&gt;Another quick video:&lt;/p&gt;
 
-&lt;style&gt;.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }&lt;/style&gt;
-&lt;div class=&quot;embed-container&quot;&gt;    &lt;iframe title=&quot;YouTube video player&quot; width=&quot;640&quot; height=&quot;390&quot; src=&quot;//www.youtube.com/embed/9ABYlcmqQ-Q&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;style&gt;
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0
+}
+
+.embed-youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;embed-youtube&quot;&gt;
+    &lt;iframe src=&quot;https://www.youtube.com/embed/9ABYlcmqQ-Q&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;p&gt;The XFCE project actually has very nice tour of version 4.14 &lt;a href=&quot;https://xfce.org/about/tour&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
@@ -144,7 +221,7 @@ do not function as a full desktop environment.  This can provide more control ov
 &lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:hopping&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Distro hopping is changing from one distro to another, something many people do, especially when first starting out with Linux.  Generally it’s done in an effort to find the perfect distro for them. &lt;a href=&quot;#fnref:hopping&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Distro hopping is changing from one distro to another, something many people do, especially when first starting out with Linux.  Generally it’s done in an effort to find the “perfect distro”. &lt;a href=&quot;#fnref:hopping&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name></name></author><summary type="html">What is a Desktop Environment</summary></entry><entry><title type="html">Step 3: Putting it all together</title><link href="http://localhost:4000/self-hosting/2020/11/15/step3.html" rel="alternate" type="text/html" title="Step 3: Putting it all together" /><published>2020-11-15T00:00:00-05:00</published><updated>2020-11-15T00:00:00-05:00</updated><id>http://localhost:4000/self-hosting/2020/11/15/step3</id><content type="html" xml:base="http://localhost:4000/self-hosting/2020/11/15/step3.html">&lt;h2 id=&quot;recaps-are-a-thing-right&quot;&gt;Recaps are a thing right?&lt;/h2&gt;

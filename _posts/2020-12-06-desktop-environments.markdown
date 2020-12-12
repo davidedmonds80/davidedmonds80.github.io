@@ -73,7 +73,7 @@ Gnome has a very unique look, and provides some truly fantastic tools for gettin
 integrates well with cloud services like Google providing a seamless experience for end users.  
 
 This is a 5 minute walkthrough of the latest version of Gnome (at the time of this writing Gnome 3)
-{% youtube "https://youtu.be/BB7pBRi9Bbk" %}
+{% include youtubePlayer.html id="BB7pBRi9Bbk" %}
 
 For more information check out the project's webpage:  [Gnome.org](https://www.gnome.org/)
 
@@ -90,7 +90,8 @@ between an Android phone and the computer.
 
 A quick tour of the latest version from KDE: 
 
-{% youtube "https://www.youtube.com/watch?v=h_YdaFNsPBE" %} 
+{% include youtubePlayer.html id="h_YdaFNsPBE" %} 
+
 As always check out the [project website](https://kde.org/) for more information
 
 ### Cinnamon
@@ -105,7 +106,7 @@ many people.
 
 Have another 5 minute video tour: 
 
-{% youtube "https://www.youtube.com/watch?v=TBSwFc6hkLY" %}
+{% include youtubePlayer.html id="TBSwFc6hkLY" %}
 
 For more information about Linux Mint and Cinnamon click [here](https://linuxmint.com/)
 
@@ -117,7 +118,7 @@ it is incredibly customizable, and with some tweaking it can look very good.
 
 Another quick video:
 
-{% youtube "https://www.youtube.com/watch?v=9ABYlcmqQ-Q" %}
+{% include youtubePlayer.html id="9ABYlcmqQ-Q" %}
 
 The XFCE project actually has very nice tour of version 4.14 [here](https://xfce.org/about/tour)
 
@@ -139,4 +140,4 @@ options:
 [Which Linux should you use?]({% post_url 2020-10-11-which-linux %})
 
 ### Footnotes
-[^hopping]: Distro hopping is changing from one distro to another, something many people do, especially when first starting out with Linux.  Generally it's done in an effort to find the perfect distro for them. 
+[^hopping]: Distro hopping is changing from one distro to another, something many people do, especially when first starting out with Linux.  Generally it's done in an effort to find the "perfect distro". 
