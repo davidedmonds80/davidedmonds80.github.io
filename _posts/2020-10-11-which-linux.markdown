@@ -246,6 +246,13 @@ own server of some sort, this is an excellent choice, since many of the things y
 have been done by large companies, the odds that you'll be able to find an answer for any problems
 you encounter are very high. 
 
+*Update December 2020* Since I initially wrote this post, the CentOS board has changed how CentOS is
+going to be released and used.  CentOS as it existed will no longer be.  The project is moving all
+of it's focus to CentOS Stream, which will essentially be a Beta product for RHEL.  It will be
+almost identical to RHEL, but it will be ahead of RHEL in terms of packages.  It will still be a
+stable distro, just one that is updated frequently.  CentOS Stream will still be an excellent tool
+to use if you want to develop for RHEL, or want to use something close to RHEL.  
+
 ### [Open Suse](https://www.opensuse.org/)
 Suse Linux is one of the older Linux distributions around, it's been used in the corporate world for
 a long time, and there are still services that use it almost exclusively.  OpenSuse is the free
